@@ -1,0 +1,54 @@
+.navbar {
+  background-color: var(--dark-blue);
+  color: var(--white);
+  padding: 1rem 0;
+}
+
+.nav_flex {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  text-align: center;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.logo .icon {
+  font-size: 2.6rem;
+  color: var(--primary);
+}
+
+.links {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-basis: 60%;
+  justify-content: space-around;
+}
+
+.links a {
+  color: white;
+}
+
+.infos {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 2rem;
+}
+
+.infos div {
+  text-align: center;
+}
+
+.infos div h3 {
+  margin-bottom: 5px;
+}
+
+.infos div p {
+  color: var(--primary);
+}
