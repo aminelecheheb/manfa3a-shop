@@ -2,8 +2,12 @@
 import styles from "@/styles/Layout.module.css";
 import Link from "next/link";
 import { FaShopify } from "react-icons/fa";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
+
 const Navbar = () => {
+  const pathname = usePathname();
   return (
     <nav className={styles.navbar}>
       <div className="container">
@@ -18,13 +22,19 @@ const Navbar = () => {
 
           <div className={styles.links}>
             <Link href="/">
-              <h3>الصفحة الرئيسية</h3>
+              <h3 className={`${pathname === "/" && "active"}`}>
+                الصفحة الرئيسية
+              </h3>
             </Link>
             <Link href="/shop">
-              <h3>جميع الفئات</h3>
+              <h3 className={`${pathname === "/shop" && "active"}`}>
+                جميع الفئات
+              </h3>
             </Link>
             <Link href="/feedbacks">
-              <h3>آراء الزبائن</h3>
+              <h3 className={`${pathname === "/feedbacks" && "active"}`}>
+                آراء الزبائن
+              </h3>
             </Link>
           </div>
           <div className={styles.infos}>
