@@ -2,6 +2,7 @@
   background-color: var(--dark-blue);
   color: var(--white);
   padding: 1rem 0;
+  text-wrap: nowrap;
 }
 
 .nav_flex {

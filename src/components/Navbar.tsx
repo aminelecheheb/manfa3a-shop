@@ -1,7 +1,8 @@
+"use client";
 import styles from "@/styles/Layout.module.css";
 import Link from "next/link";
 import { FaShopify } from "react-icons/fa";
-
+import { useSession } from "next-auth/react";
 const Navbar = () => {
   return (
     <nav className={styles.navbar}>
@@ -9,8 +10,8 @@ const Navbar = () => {
         <div className={styles.nav_flex}>
           <div className={styles.logo}>
             <div>
-              <h1 className={styles.logo}>منفعة شوب</h1>
-              <h2>Weal Shop</h2>
+              <h2 className={styles.logo}>منفعة شوب</h2>
+              <h3>Weal Shop</h3>
             </div>
             <FaShopify className={styles.icon} />
           </div>

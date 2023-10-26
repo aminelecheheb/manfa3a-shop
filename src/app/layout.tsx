@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import Navbar from "@/components/Navbar";
+import { Providers } from "@/context/provider";
 
 export const metadata: Metadata = {
   title: "Manfa3a Shop",
@@ -15,8 +16,10 @@ export default function RootLayout({
   return (
     <html lang="ar">
       <body className="wrapper">
-        <Navbar />
-        {children}
+        <Providers>
+          <Navbar />
+          {children}
+        </Providers>
       </body>
     </html>
   );
