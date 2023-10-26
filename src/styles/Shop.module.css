@@ -1,0 +1,8 @@
+.shop_container {
+  display: flex;
+  height: 100%;
+}
+
+.shop {
+  flex-basis: 100%;
+}

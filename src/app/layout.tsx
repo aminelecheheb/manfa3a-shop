@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import Navbar from "@/components/Navbar";
 import { Providers } from "@/context/provider";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Manfa3a Shop",
@@ -19,6 +20,7 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           {children}
+          <Footer />
         </Providers>
       </body>
     </html>

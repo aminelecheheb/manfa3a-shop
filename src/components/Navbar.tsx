@@ -2,9 +2,7 @@
 import styles from "@/styles/Layout.module.css";
 import Link from "next/link";
 import { FaShopify } from "react-icons/fa";
-import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
 
 const Navbar = () => {
   const pathname = usePathname();
