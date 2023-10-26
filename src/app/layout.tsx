@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import Navbar from "@/components/Navbar";
 import { Providers } from "@/context/provider";
 import Footer from "@/components/Footer";
+import ToggleNav from "@/components/ToggleNav";
 
 export const metadata: Metadata = {
   title: "Manfa3a Shop",
@@ -19,6 +20,7 @@ export default function RootLayout({
       <body className="wrapper">
         <Providers>
           <Navbar />
+          <ToggleNav />
           {children}
           <Footer />
         </Providers>

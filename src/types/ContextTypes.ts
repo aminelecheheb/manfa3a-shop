@@ -1,5 +1,5 @@
 type StateType = {
-  activeNav: string;
+  showNav: boolean;
 };
 
 type ActionType = {
@@ -9,5 +9,5 @@ type ActionType = {
 
 type ContextType = {
   state: StateType;
-  setActiveNav: (value: string) => void;
+  toggleShowNav: () => void;
 };

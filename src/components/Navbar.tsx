@@ -2,17 +2,20 @@
 import styles from "@/styles/Layout.module.css";
 import Link from "next/link";
 import { FaShopify } from "react-icons/fa";
+import { AiOutlineMenu } from "react-icons/ai";
 import { usePathname } from "next/navigation";
+import { useGlobalContext } from "@/context/appContext";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const { toggleShowNav } = useGlobalContext();
   return (
     <nav className={styles.navbar}>
       <div className="container">
         <div className={styles.nav_flex}>
           <div className={styles.logo}>
             <div>
-              <h2 className={styles.logo}>منفعة شوب</h2>
+              <h3 className={styles.logo}>منفعة شوب</h3>
               <h3>Weal Shop</h3>
             </div>
             <FaShopify className={styles.icon} />
@@ -45,6 +48,9 @@ const Navbar = () => {
               <p> 58 ولاية</p>
             </div>
           </div>
+          <button className={styles.toggle_btn} onClick={toggleShowNav}>
+            <AiOutlineMenu className={styles.icon} />
+          </button>
         </div>
       </div>
     </nav>

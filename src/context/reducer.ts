@@ -1,9 +1,9 @@
 const reducer = (state: StateType, action: ActionType) => {
   switch (action.type) {
-    case "SET_ACTIVE_NAV":
+    case "TOGGLE_SHOW_NAV":
       return {
         ...state,
-        activeNav: action.payload,
+        showNav: !state.showNav,
       };
 
     default:

@@ -2,26 +2,26 @@ import React, { useContext, useReducer } from "react";
 import reducer from "./reducer";
 
 const initialState = {
-  activeNav: "home",
+  showNav: false,
 };
 
 const AppContext = React.createContext<ContextType>({
   state: initialState,
-  setActiveNav: () => {},
+  toggleShowNav: () => {},
 });
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const setActiveNav = (value: string) => {
-    dispatch({ type: "SET_ACTIVE_NAV", payload: value });
+  const toggleShowNav = () => {
+    dispatch({ type: "TOGGLE_SHOW_NAV" });
   };
 
   return (
     <AppContext.Provider
       value={{
         state,
-        setActiveNav,
+        toggleShowNav,
       }}
     >
       {children}
