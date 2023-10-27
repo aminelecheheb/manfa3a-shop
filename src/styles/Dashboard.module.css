@@ -4,6 +4,7 @@
 
 .flex {
   display: flex;
+  gap: 1rem;
 }
 
 .actions {
@@ -24,4 +25,16 @@
 
 .display {
   flex-grow: 1;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.category {
+  text-align: center;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--accent);
 }

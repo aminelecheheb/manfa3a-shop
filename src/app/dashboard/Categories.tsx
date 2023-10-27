@@ -10,9 +10,13 @@ const Categories = async () => {
     <div className={styles.categories_container}>
       <h2>Categories</h2>
       <div className={styles.categories}>
-        {categories.categories?.map((category) => {
-          return <Category key={category.id} category={category} />;
-        })}
+        {categories.categories ? (
+          categories.categories?.map((category) => {
+            return <Category key={category.id} category={category} />;
+          })
+        ) : (
+          <h2>something went wrong</h2>
+        )}
       </div>
     </div>
   );

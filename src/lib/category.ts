@@ -19,3 +19,14 @@ export async function createCategory(category: string) {
     return { error };
   }
 }
+
+export const deleteCategory = async (id: number) => {
+  try {
+    const category = await prisma.category.delete({
+      where: { id },
+    });
+    return { category };
+  } catch (error) {
+    return { error };
+  }
+};
