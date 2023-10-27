@@ -11,7 +11,6 @@ import { LogoutButton } from "./auth";
 const Navbar = () => {
   const pathname = usePathname();
   const { status } = useSession();
-  console.log(status);
 
   const { toggleShowNav } = useGlobalContext();
   return (

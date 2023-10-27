@@ -1,8 +1,19 @@
+import styles from "@/styles/Dashboard.module.css";
+import CategoryForm from "./CategoryForm";
+import Categories from "./Categories";
+
 const page = () => {
   return (
-    <main>
+    <main className={styles.dashboard}>
       <div className="container">
-        <h1>dashboard</h1>
+        <div className={styles.flex}>
+          <div className={styles.actions}>
+            <CategoryForm />
+          </div>
+          <div className={styles.display}>
+            <Categories />
+          </div>
+        </div>
       </div>
     </main>
   );

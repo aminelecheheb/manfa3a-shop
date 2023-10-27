@@ -1,0 +1,27 @@
+.dashboard {
+  direction: ltr;
+}
+
+.flex {
+  display: flex;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.newCategory_form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.newCategory_form input,
+.newCategory_form button {
+  padding: 0.4rem 0.8rem;
+}
+
+.display {
+  flex-grow: 1;
+}
