@@ -16,3 +16,23 @@ model Admin {
   name String?
   password String 
 }
+
+model Product {
+  id Int @id @default(autoincrement())
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  title      String
+  description String
+  attribute String
+  images String
+  published  Boolean    @default(false)
+  category Category? @relation(fields: [categoryId], references: [id])
+  categoryId Int
+
+}
+
+model Category {
+  id Int @id @default(autoincrement())
+  category String
+  products Product[]
+}
