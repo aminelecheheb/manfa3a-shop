@@ -5,9 +5,14 @@ import { FaShopify } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
 import { usePathname } from "next/navigation";
 import { useGlobalContext } from "@/context/appContext";
+import { useSession } from "next-auth/react";
+import { LogoutButton } from "./auth";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const { status } = useSession();
+  console.log(status);
+
   const { toggleShowNav } = useGlobalContext();
   return (
     <nav className={styles.navbar}>
@@ -32,22 +37,34 @@ const Navbar = () => {
                 جميع الفئات
               </h3>
             </Link>
-            <Link href="/feedbacks">
-              <h3 className={`${pathname === "/feedbacks" && "active"}`}>
-                آراء الزبائن
-              </h3>
-            </Link>
+            {status !== "authenticated" ? (
+              <Link href="/feedbacks">
+                <h3 className={`${pathname === "/feedbacks" && "active"}`}>
+                  آراء الزبائن
+                </h3>
+              </Link>
+            ) : (
+              <Link href="/dashboard">
+                <h3 className={`${pathname === "/dashboard" && "active"}`}>
+                  لوحة التحكم
+                </h3>
+              </Link>
+            )}
           </div>
-          <div className={styles.infos}>
-            <div>
-              <h3>اتصل بنا</h3>
-              <p>07 76 52 12 25</p>
+          {status !== "authenticated" ? (
+            <div className={styles.infos}>
+              <div>
+                <h3>اتصل بنا</h3>
+                <p>07 76 52 12 25</p>
+              </div>
+              <div>
+                <h3>توصيل متوفر</h3>
+                <p> 58 ولاية</p>
+              </div>
             </div>
-            <div>
-              <h3>توصيل متوفر</h3>
-              <p> 58 ولاية</p>
-            </div>
-          </div>
+          ) : (
+            <LogoutButton />
+          )}
           <button className={styles.toggle_btn} onClick={toggleShowNav}>
             <AiOutlineMenu className={styles.icon} />
           </button>
