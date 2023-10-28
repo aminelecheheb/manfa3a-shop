@@ -1,8 +1,13 @@
+"use client";
+
 import styles from "@/styles/Dashboard.module.css";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
+import { deleteProductAction, publishProductAction } from "@/_actions";
 
 const Product = ({ product }: { product: ProductProps }) => {
-  const { title, description, attribute, images } = product;
+  const { status } = useSession();
+  const { id, title, price, attribute, images, published } = product;
   const imagesArr = images.split(",");
 
   return (
@@ -12,8 +17,45 @@ const Product = ({ product }: { product: ProductProps }) => {
       </div>
       <div className={styles.infos}>
         <h3>{title}</h3>
-        <p>{description}</p>
+        <h4>{price}</h4>
       </div>
+      {status === "authenticated" ? (
+        <AdminActions published={published} id={id} />
+      ) : (
+        <UserActions />
+      )}
+    </div>
+  );
+};
+
+const UserActions = () => {
+  return (
+    <div className={styles.user_actions}>
+      <button>اشتر الان</button>
+    </div>
+  );
+};
+
+const AdminActions = ({
+  published,
+  id,
+}: {
+  published: boolean;
+  id: number;
+}) => {
+  const handlePublish = async (id: number) => {
+    const product = await publishProductAction(id, true);
+    console.log(product);
+  };
+  return (
+    <div className={styles.admin_actions}>
+      <button onClick={() => deleteProductAction(id)}>delete</button>
+      <button>edit</button>
+      {published ? (
+        <button>unpublish</button>
+      ) : (
+        <button onClick={() => handlePublish(id)}>publish</button>
+      )}
     </div>
   );
 };

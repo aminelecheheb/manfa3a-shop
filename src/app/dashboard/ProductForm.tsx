@@ -23,16 +23,23 @@ const ProductForm = () => {
     const categoryId = data.get("categoryId");
     if (typeof categoryId !== "string" || !categoryId) return;
 
+    const price = data.get("price");
+    if (typeof price !== "string" || !price) return;
+
+    const oldPrice = data.get("oldPrice");
+    if (typeof oldPrice !== "string") return;
+
     const product = await createProductAction(
       title,
       description,
       attribute,
       images,
+      price,
+      oldPrice,
       categoryId
     );
-    console.log(product);
-
     formRef.current?.reset();
+    console.log(product);
   }
   return (
     <div>
@@ -46,6 +53,8 @@ const ProductForm = () => {
         ></textarea>
         <input type="text" name="attribute" placeholder="attribute" />
         <textarea name="images" placeholder="images urls" required></textarea>
+        <input name="price" type="number" placeholder="price" required />
+        <input name="oldPrice" type="number" placeholder="old price" />
         <input
           type="string"
           name="categoryId"

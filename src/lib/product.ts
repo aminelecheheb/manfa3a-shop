@@ -18,14 +18,47 @@ export async function createProduct(
   description: string,
   attribute: string,
   images: string,
+  price: number,
+  oldPrice: number,
   categoryId: number
 ) {
   try {
     const product = await prisma.product.create({
-      data: { title, description, attribute, images, categoryId },
+      data: {
+        title,
+        description,
+        attribute,
+        images,
+        price,
+        oldPrice,
+        categoryId,
+      },
     });
     return { product };
   } catch (error) {
     return { error };
   }
 }
+
+export const deleteProduct = async (id: number) => {
+  try {
+    const product = await prisma.product.delete({
+      where: { id },
+    });
+    return { product };
+  } catch (error) {
+    return { error };
+  }
+};
+
+export const publishProduct = async (id: number, published: boolean) => {
+  try {
+    const product = await prisma.product.update({
+      where: { id },
+      data: { published },
+    });
+    return { product };
+  } catch (error) {
+    return { error };
+  }
+};
