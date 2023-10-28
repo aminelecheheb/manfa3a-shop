@@ -4,7 +4,6 @@ import Category from "./Category";
 
 const Categories = async () => {
   const categories = await getCategories();
-  // console.log(categories);
 
   return (
     <div className={styles.categories_container}>

@@ -1,6 +1,7 @@
 import styles from "@/styles/Dashboard.module.css";
 import CategoryForm from "./CategoryForm";
 import Categories from "./Categories";
+import ProductForm from "./ProductForm";
 
 const page = () => {
   return (
@@ -9,6 +10,7 @@ const page = () => {
         <div className={styles.flex}>
           <div className={styles.actions}>
             <CategoryForm />
+            <ProductForm />
           </div>
           <div className={styles.display}>
             <Categories />

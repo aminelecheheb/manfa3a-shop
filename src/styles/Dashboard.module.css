@@ -12,14 +12,18 @@
   flex-direction: column;
 }
 
-.newCategory_form {
+.newCategory_form,
+.newProduct_form {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
 .newCategory_form input,
-.newCategory_form button {
+.newProduct_form input,
+.newProduct_form textarea,
+.newCategory_form button,
+.newProduct_form button {
   padding: 0.4rem 0.8rem;
 }
 
