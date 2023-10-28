@@ -15,7 +15,7 @@ const ProductForm = () => {
     if (typeof description !== "string" || !description) return;
 
     const attribute = data.get("attribute");
-    if (typeof attribute !== "string" || !attribute) return;
+    if (typeof attribute !== "string") return;
 
     const images = data.get("images");
     if (typeof images !== "string" || !images) return;
@@ -38,11 +38,20 @@ const ProductForm = () => {
     <div>
       <h2>create new product</h2>
       <form ref={formRef} className={styles.newProduct_form} action={action}>
-        <input type="text" name="title" placeholder="title" />
-        <textarea name="description" placeholder="description"></textarea>
+        <input type="text" name="title" placeholder="title" required />
+        <textarea
+          name="description"
+          placeholder="description"
+          required
+        ></textarea>
         <input type="text" name="attribute" placeholder="attribute" />
-        <textarea name="images" placeholder="images urls"></textarea>
-        <input type="string" name="categoryId" placeholder="category id" />
+        <textarea name="images" placeholder="images urls" required></textarea>
+        <input
+          type="string"
+          name="categoryId"
+          placeholder="category id"
+          required
+        />
         <button>submit</button>
       </form>
     </div>

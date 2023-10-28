@@ -1,8 +1,12 @@
 import { prisma } from "./prisma";
 
-export async function getAllProducts() {
+export async function getAllProducts(published: boolean) {
   try {
-    const products = await prisma.product.findMany({});
+    const products = await prisma.product.findMany({
+      where: {
+        published,
+      },
+    });
     return { products };
   } catch (error) {
     return { error };
