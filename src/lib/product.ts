@@ -13,6 +13,21 @@ export async function getAllProducts(published: boolean) {
   }
 }
 
+export const getProductByCategory = async (
+  category: string,
+  published: boolean
+) => {
+  try {
+    const id = parseInt(category);
+    const products = await prisma.product.findMany({
+      where: { category: { id }, published },
+    });
+    return { products };
+  } catch (error) {
+    return { error };
+  }
+};
+
 export async function createProduct(
   title: string,
   description: string,

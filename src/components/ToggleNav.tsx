@@ -3,7 +3,14 @@ import { useGlobalContext } from "@/context/appContext";
 import styles from "@/styles/Layout.module.css";
 import Link from "next/link";
 
-const ToggleNav = () => {
+type CategoriesType =
+  | {
+      id: number;
+      category: string;
+    }[]
+  | undefined;
+
+const ToggleNav = ({ categories }: { categories: CategoriesType }) => {
   const { state } = useGlobalContext();
   const { showNav } = state;
 
@@ -17,12 +24,11 @@ const ToggleNav = () => {
         <Link href="/">الصفحة الرئيسية</Link>
         <Link href="/feedbacks">آراء الزبائن</Link>
         <Link href="/shop">جميع الفئات</Link>
-        <Link href="/shop"> أدوات كهرومنزلية</Link>
-        <Link href="/shop">إلكترونيات</Link>
-        <Link href="/shop"> عتاد الرياضة</Link>
-        <Link href="/shop">ملابس رجالية</Link>
-        <Link href="/shop"> عتاد التخييم</Link>
-        <Link href="/shop"> أكسسوارات</Link>
+        {categories?.map((category) => {
+          return (
+            <Link href={`/shop/${category.id}`}> {category.category} </Link>
+          );
+        })}
       </div>
     </aside>
   );

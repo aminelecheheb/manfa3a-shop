@@ -1,15 +1,21 @@
+import { getCategories } from "@/lib/category";
 import styles from "@/styles/Layout.module.css";
+import Link from "next/link";
 
-const Sidebar = () => {
+const Sidebar = async () => {
+  const { categories } = await getCategories();
   return (
     <div className={styles.sidebar}>
-      <h3>جميع الفئات</h3>
-      <h3> أدوات كهرومنزلية</h3>
-      <h3>إلكترونيات</h3>
-      <h3> عتاد الرياضة</h3>
-      <h3>ملابس رجالية</h3>
-      <h3> عتاد التخييم</h3>
-      <h3> أكسسوارات</h3>
+      <Link href="/shop">
+        <h3>جميع الفئات</h3>
+      </Link>
+      {categories?.map((category) => {
+        return (
+          <Link key={category.id} href={`/shop/${category.id}`}>
+            <h3> {category.category} </h3>
+          </Link>
+        );
+      })}
     </div>
   );
 };

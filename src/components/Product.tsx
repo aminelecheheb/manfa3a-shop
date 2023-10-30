@@ -17,7 +17,7 @@ const Product = ({ product }: { product: ProductProps }) => {
       </div>
       <div className={styles.infos}>
         <h3>{title}</h3>
-        <h4>{price}</h4>
+        <h4>{price} دج</h4>
       </div>
       {status === "authenticated" ? (
         <AdminActions published={published} id={id} />
@@ -31,7 +31,7 @@ const Product = ({ product }: { product: ProductProps }) => {
 const UserActions = () => {
   return (
     <div className={styles.user_actions}>
-      <button>اشتر الان</button>
+      <button className={styles.buy_now}>اشتر الان</button>
     </div>
   );
 };
@@ -47,12 +47,17 @@ const AdminActions = ({
     const product = await publishProductAction(id, true);
     console.log(product);
   };
+
+  const handleUnpublish = async (id: number) => {
+    const product = await publishProductAction(id, false);
+    console.log(product);
+  };
   return (
     <div className={styles.admin_actions}>
       <button onClick={() => deleteProductAction(id)}>delete</button>
       <button>edit</button>
       {published ? (
-        <button>unpublish</button>
+        <button onClick={() => handleUnpublish(id)}>unpublish</button>
       ) : (
         <button onClick={() => handlePublish(id)}>publish</button>
       )}
