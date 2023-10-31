@@ -4,6 +4,7 @@ import styles from "@/styles/Dashboard.module.css";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { deleteProductAction, publishProductAction } from "@/_actions";
+import Link from "next/link";
 
 const Product = ({ product }: { product: ProductProps }) => {
   const { status } = useSession();
@@ -22,16 +23,18 @@ const Product = ({ product }: { product: ProductProps }) => {
       {status === "authenticated" ? (
         <AdminActions published={published} id={id} />
       ) : (
-        <UserActions />
+        <UserActions productId={id} />
       )}
     </div>
   );
 };
 
-const UserActions = () => {
+const UserActions = ({ productId }: { productId: number }) => {
   return (
     <div className={styles.user_actions}>
-      <button className={styles.buy_now}>اشتر الان</button>
+      <Link className={styles.buy_now} href={`/product/${productId}`}>
+        <h4>اشتر الان</h4>
+      </Link>
     </div>
   );
 };
@@ -45,12 +48,10 @@ const AdminActions = ({
 }) => {
   const handlePublish = async (id: number) => {
     const product = await publishProductAction(id, true);
-    console.log(product);
   };
 
   const handleUnpublish = async (id: number) => {
     const product = await publishProductAction(id, false);
-    console.log(product);
   };
   return (
     <div className={styles.admin_actions}>

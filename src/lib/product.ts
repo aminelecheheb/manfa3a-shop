@@ -28,6 +28,16 @@ export const getProductByCategory = async (
   }
 };
 
+export const getProductById = async (id: string) => {
+  const intId = parseInt(id);
+  try {
+    const product = await prisma.product.findUnique({ where: { id: intId } });
+    return { product };
+  } catch (error) {
+    return { error };
+  }
+};
+
 export async function createProduct(
   title: string,
   description: string,

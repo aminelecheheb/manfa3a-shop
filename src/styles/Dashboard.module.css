@@ -92,4 +92,5 @@
   background-color: var(--primary);
   border: none;
   border-radius: 20px;
+  text-align: center;
 }
