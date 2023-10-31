@@ -45,6 +45,7 @@ export async function createProduct(
   images: string,
   price: number,
   oldPrice: number,
+  colors: string,
   categoryId: number
 ) {
   try {
@@ -56,6 +57,7 @@ export async function createProduct(
         images,
         price,
         oldPrice,
+        colors,
         categoryId,
       },
     });

@@ -26,7 +26,9 @@ const ToggleNav = ({ categories }: { categories: CategoriesType }) => {
         <Link href="/shop">جميع الفئات</Link>
         {categories?.map((category) => {
           return (
-            <Link href={`/shop/${category.id}`}> {category.category} </Link>
+            <Link key={category.id} href={`/shop/${category.id}`}>
+              {category.category}
+            </Link>
           );
         })}
       </div>

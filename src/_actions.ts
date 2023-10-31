@@ -21,6 +21,7 @@ export const createProductAction = async (
   images: string,
   price: string,
   oldPrice: string,
+  colors: string,
   categoryId: string
 ) => {
   try {
@@ -35,6 +36,7 @@ export const createProductAction = async (
       images,
       priceInt,
       oldPriceInt,
+      colors,
       categoryIdInt
     );
     revalidatePath("/dashboard");

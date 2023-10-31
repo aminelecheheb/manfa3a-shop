@@ -26,7 +26,8 @@ model Product {
   attribute String
   images String
   price Int
-  oldPrice Int
+  oldPrice Int?
+  colors String?
   published  Boolean    @default(false)
   category Category? @relation(fields: [categoryId], references: [id])
   categoryId Int
