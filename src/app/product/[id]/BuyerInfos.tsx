@@ -1,7 +1,17 @@
 "use client";
 import styles from "@/styles/Product.module.css";
+import { useState } from "react";
 
-const BuyerInfos = () => {
+const BuyerInfos = ({ colors }: { colors: string[] }) => {
+  const [quantity, setQuantity] = useState(1);
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const decreaseQuantity = () => {
+    quantity > 1 && setQuantity(quantity - 1);
+  };
+
   return (
     <div className={styles.buyer_infos_container}>
       <h2> معلومات المشتري</h2>
@@ -39,6 +49,33 @@ const BuyerInfos = () => {
             </label>
           </div>
         </div>
+        <h2>اختر اللون و الكمية</h2>
+        <div className={styles.req_details}>
+          {colors.length >= 1 && (
+            <select className={styles.color} name="color" id="color">
+              {colors.map((color) => {
+                return (
+                  <option key={colors.indexOf(color)} value={color}>
+                    {color}
+                  </option>
+                );
+              })}
+            </select>
+          )}
+          <div className={styles.quantity}>
+            <div>
+              <span onClick={decreaseQuantity}>-</span>
+            </div>
+
+            <div>
+              <span>{quantity}</span>
+            </div>
+            <div>
+              <span onClick={increaseQuantity}>+</span>
+            </div>
+          </div>
+        </div>
+        <button className={styles.action_btn}>اشتر الان</button>
       </form>
     </div>
   );

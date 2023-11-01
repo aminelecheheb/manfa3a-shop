@@ -13,7 +13,15 @@ const DisplayImages = ({ images }: { images: string[] }) => {
       <div className={styles.small_images}>
         {images.map((image) => {
           return (
-            <div className={styles.small_image_container}>
+            <div
+              key={images.indexOf(image)}
+              className={
+                image === bigImage
+                  ? `${styles.small_image_container} ${styles.active}`
+                  : styles.small_image_container
+              }
+              onClick={() => setBigImage(image)}
+            >
               <Image src={image} alt="small image" fill />
             </div>
           );

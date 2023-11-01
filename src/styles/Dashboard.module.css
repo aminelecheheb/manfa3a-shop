@@ -62,10 +62,16 @@
   position: relative;
   width: 100%;
   aspect-ratio: 1/1;
+  overflow: hidden;
+}
+
+.image_container:hover .img {
+  transform: scale(1.1);
 }
 
 .img {
   object-fit: cover;
+  transition-duration: 300ms;
 }
 
 .infos {
