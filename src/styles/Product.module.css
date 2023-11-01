@@ -145,7 +145,11 @@
 }
 
 .quantity span {
-  margin-top: -4px;
+  margin-top: 6px;
+}
+
+.quantity span.number {
+  margin-top: 0;
 }
 
 .quantity div:nth-child(1) {

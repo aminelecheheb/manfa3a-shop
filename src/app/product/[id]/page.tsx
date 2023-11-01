@@ -23,7 +23,7 @@ const page = async ({ params }: { params: { id: string } }) => {
               <Markdown>{description}</Markdown>
             </div>
             <div className={styles.buyer_info}>
-              <BuyerInfos colors={colorsArr} />
+              <BuyerInfos colors={colorsArr} productId={id} />
             </div>
           </div>
         </div>
