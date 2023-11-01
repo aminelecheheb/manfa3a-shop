@@ -79,7 +79,7 @@ export const createOrderAction = async (
       quantity,
       color
     );
-    return { order };
+    return order;
   } catch (error) {
     return { error };
   }

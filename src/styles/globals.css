@@ -6,6 +6,9 @@
   --black: #000;
   --primary: #eab321;
   --accent: #fef0cd;
+  --danger: rgb(248, 48, 48);
+  --success: rgb(189, 250, 195);
+  --success-dark: rgb(27, 224, 116);
 }
 
 html {

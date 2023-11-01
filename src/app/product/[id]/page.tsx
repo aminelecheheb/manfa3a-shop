@@ -19,7 +19,7 @@ const page = async ({ params }: { params: { id: string } }) => {
           <div className={styles.main_flex}>
             <div className={styles.product_info}>
               <DisplayImages images={imagesArr} />
-              <h3>{title}</h3>
+              <h1>{title}</h1>
               <Markdown>{description}</Markdown>
             </div>
             <div className={styles.buyer_info}>
