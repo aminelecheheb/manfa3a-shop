@@ -32,8 +32,8 @@ const Navbar = () => {
               </h3>
             </Link>
             <Link href="/shop">
-              <h3 className={`${pathname === "/shop" && "active"}`}>
-                جميع الفئات
+              <h3 className={`${pathname.includes("shop") && "active"}`}>
+                المتجر
               </h3>
             </Link>
             {/* {status !== "authenticated" ? (
@@ -49,6 +49,20 @@ const Navbar = () => {
                 </h3>
               </Link>
             )} */}
+            {status === "authenticated" && (
+              <>
+                <Link href="/dashboard">
+                  <h3 className={`${pathname === "/dashboard" && "active"}`}>
+                    لوحة التحكم
+                  </h3>
+                </Link>
+                <Link href={"/dashboard/orders"}>
+                  <h3 className={`${pathname.includes("orders") && "active"}`}>
+                    الطلبيات
+                  </h3>
+                </Link>
+              </>
+            )}
           </div>
           {status !== "authenticated" ? (
             <div className={styles.infos}>
