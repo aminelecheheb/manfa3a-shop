@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { createOrderAction } from "@/_actions";
 import { log } from "console";
+import Link from "next/link";
 
 type AlertType = {
   showAlert: boolean;
@@ -88,7 +89,7 @@ const BuyerInfos = ({
     return (
       <div className={styles.buyer_infos_container}>
         <h2> معلومات المشتري</h2>
-        <form ref={formRef} action={action} className={styles.form}>
+        <form ref={formRef} action={action} className={styles.form} id="form">
           <div className={styles.flex}>
             <input type="text" name="fName" placeholder="الاسم" required />
             <input type="text" name="lName" placeholder="اللقب" required />
@@ -169,6 +170,11 @@ const BuyerInfos = ({
           <button className={styles.action_btn} type="submit">
             اشتر الان
           </button>
+          <div className={styles.fixed_action}>
+            <button className={styles.btn_fixed} type="submit">
+              اشتر الان
+            </button>
+          </div>
           {alert.showAlert && alert.type === "danger" && (
             <h3 className={styles.alert_danger}>
               حصل خلل ما, يرجى اعادة المحاولة

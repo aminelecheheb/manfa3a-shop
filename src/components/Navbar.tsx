@@ -36,7 +36,7 @@ const Navbar = () => {
                 جميع الفئات
               </h3>
             </Link>
-            {status !== "authenticated" ? (
+            {/* {status !== "authenticated" ? (
               <Link href="/feedbacks">
                 <h3 className={`${pathname === "/feedbacks" && "active"}`}>
                   آراء الزبائن
@@ -48,7 +48,7 @@ const Navbar = () => {
                   لوحة التحكم
                 </h3>
               </Link>
-            )}
+            )} */}
           </div>
           {status !== "authenticated" ? (
             <div className={styles.infos}>

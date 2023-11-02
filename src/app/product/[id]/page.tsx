@@ -9,17 +9,21 @@ const page = async ({ params }: { params: { id: string } }) => {
   const { product } = await getProductById(params.id);
 
   if (product) {
-    const { id, title, description, images, colors } = product;
+    const { id, title, description, images, colors, price, oldPrice } = product;
     const colorsArr = colors?.split(",") || [];
     const imagesArr = images.split(",");
 
     return (
-      <main>
+      <main className={styles.main}>
         <div className="container">
           <div className={styles.main_flex}>
             <div className={styles.product_info}>
               <DisplayImages images={imagesArr} />
-              <h1>{title}</h1>
+              <h1 className={styles.product_title}>{title}</h1>
+              <div className={styles.prices}>
+                <span className={styles.old_price}>{oldPrice}</span>
+                <h2>{price} دج</h2>
+              </div>
               <Markdown>{description}</Markdown>
             </div>
             <div className={styles.buyer_info}>

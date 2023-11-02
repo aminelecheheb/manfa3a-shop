@@ -22,7 +22,7 @@ const ToggleNav = ({ categories }: { categories: CategoriesType }) => {
     >
       <div className={styles.sidebar_links}>
         <Link href="/">الصفحة الرئيسية</Link>
-        <Link href="/feedbacks">آراء الزبائن</Link>
+        {/* <Link href="/feedbacks">آراء الزبائن</Link> */}
         <Link href="/shop">جميع الفئات</Link>
         {categories?.map((category) => {
           return (

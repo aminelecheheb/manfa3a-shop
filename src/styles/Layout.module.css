@@ -30,7 +30,8 @@
   display: flex;
   flex-direction: row-reverse;
   flex-basis: 60%;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 4rem;
 }
 .links h3,
 .infos h3 {
