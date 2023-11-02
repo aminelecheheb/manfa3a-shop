@@ -28,3 +28,14 @@ export async function createOrder(
     return { error };
   }
 }
+
+export const getOrders = async (state: string) => {
+  try {
+    const orders = await prisma.order.findMany({
+      where: { state },
+    });
+    return orders;
+  } catch (error) {
+    return { error };
+  }
+};

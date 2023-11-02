@@ -51,4 +51,5 @@ model Order {
   livraison String
   color String?
   quantity Int
+  state String @default("new")
 }

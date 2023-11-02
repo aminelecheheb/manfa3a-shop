@@ -1,0 +1,19 @@
+.client_container {
+  padding-top: 2rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.tab {
+  background-color: var(--accent);
+  padding: 8px 1rem;
+  border: 1px solid var(--primary);
+  cursor: pointer;
+}
+
+.tab.active {
+  background-color: var(--primary);
+}
