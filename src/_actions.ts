@@ -11,8 +11,9 @@ export async function createCategoryAction(category: string) {
 }
 
 export const deleteCategoryAction = async (id: number) => {
-  await deleteCategory(id);
+  const category = await deleteCategory(id);
   revalidatePath("/dashboard");
+  return category;
 };
 
 export const createProductAction = async (

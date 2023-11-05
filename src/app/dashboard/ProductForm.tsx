@@ -3,6 +3,8 @@
 import styles from "@/styles/Dashboard.module.css";
 import { useRef } from "react";
 import { createProductAction } from "@/_actions";
+import { useFormStatus } from "react-dom";
+import { log } from "util";
 
 const ProductForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -43,7 +45,7 @@ const ProductForm = () => {
       categoryId
     );
     formRef.current?.reset();
-    console.log(product);
+    // console.log(product);
   }
   return (
     <div>
@@ -66,9 +68,17 @@ const ProductForm = () => {
           placeholder="category id"
           required
         />
-        <button>submit</button>
+        <SubmitBtn />
       </form>
     </div>
+  );
+};
+
+const SubmitBtn = () => {
+  const { pending } = useFormStatus();
+
+  return (
+    <button disabled={pending}>{pending ? "loading..." : "submit"}</button>
   );
 };
 

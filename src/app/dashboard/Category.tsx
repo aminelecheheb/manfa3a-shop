@@ -2,6 +2,8 @@
 
 import { deleteCategoryAction } from "@/_actions";
 import styles from "@/styles/Dashboard.module.css";
+import { useState } from "react";
+import { useFormStatus } from "react-dom";
 
 type CategoryType = {
   id: number;
@@ -9,11 +11,19 @@ type CategoryType = {
 };
 
 const Category = ({ category }: { category: CategoryType }) => {
+  const [loading, setLoading] = useState(false);
+  const handleDelete = async () => {
+    setLoading(true);
+    await deleteCategoryAction(category.id);
+    setLoading(false);
+  };
   return (
     <div className={styles.category}>
       <h4>{`id : ${category.id}`}</h4>
       <h3>{category.category}</h3>
-      <button onClick={() => deleteCategoryAction(category.id)}>delete</button>
+      <button disabled={loading} onClick={handleDelete}>
+        {loading ? "loading" : "delete"}
+      </button>
     </div>
   );
 };
