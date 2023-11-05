@@ -2,7 +2,7 @@
 import { revalidatePath } from "next/cache";
 import { createCategory, deleteCategory } from "./lib/category";
 import { createProduct, deleteProduct, publishProduct } from "./lib/product";
-import { createOrder } from "./lib/order";
+import { createOrder, updateOrder } from "./lib/order";
 
 export async function createCategoryAction(category: string) {
   const data = await createCategory(category);
@@ -82,5 +82,15 @@ export const createOrderAction = async (
     return order;
   } catch (error) {
     return { error };
+  }
+};
+
+export const updateOrderAction = async (id: number, payload: string) => {
+  try {
+    const order = await updateOrder(id, payload);
+    revalidatePath("/dashboard/orders");
+    return order;
+  } catch (error) {
+    return error;
   }
 };

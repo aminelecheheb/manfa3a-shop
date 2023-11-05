@@ -6,9 +6,21 @@ import { Dispatch, SetStateAction } from "react";
 const Tabs = ({
   setActiveTab,
   activeTab,
+  newLen,
+  confirmedLen,
+  recievedLen,
+  canceledLen,
+  returnedLen,
+  onDeleveryLen,
 }: {
   setActiveTab: Dispatch<SetStateAction<string>>;
   activeTab: string;
+  newLen: number;
+  confirmedLen: number;
+  recievedLen: number;
+  canceledLen: number;
+  returnedLen: number;
+  onDeleveryLen: number;
 }) => {
   return (
     <div className={styles.tabs}>
@@ -20,7 +32,7 @@ const Tabs = ({
             : styles.tab
         }
       >
-        طلبيات جارية
+        طلبيات جارية ({newLen})
       </button>
       <button
         onClick={() => setActiveTab("confirmed orders")}
@@ -30,7 +42,17 @@ const Tabs = ({
             : styles.tab
         }
       >
-        طلبيات مؤكدة
+        طلبيات مؤكدة ({confirmedLen})
+      </button>
+      <button
+        onClick={() => setActiveTab("on delevery")}
+        className={
+          activeTab === "on delevery"
+            ? `${styles.tab} ${styles.active}`
+            : styles.tab
+        }
+      >
+        قيد التوصيل ({onDeleveryLen})
       </button>
       <button
         onClick={() => setActiveTab("recieved orders")}
@@ -40,7 +62,17 @@ const Tabs = ({
             : styles.tab
         }
       >
-        طلبيات مستلمة
+        طلبيات مستلمة ({recievedLen})
+      </button>
+      <button
+        onClick={() => setActiveTab("returned orders")}
+        className={
+          activeTab === "returned orders"
+            ? `${styles.tab} ${styles.active}`
+            : styles.tab
+        }
+      >
+        طلبيات تم ارجاعها ({returnedLen})
       </button>
       <button
         onClick={() => setActiveTab("canceled orders")}
@@ -50,7 +82,7 @@ const Tabs = ({
             : styles.tab
         }
       >
-        طلبيات ملغات
+        طلبيات ملغات ({canceledLen})
       </button>
     </div>
   );
