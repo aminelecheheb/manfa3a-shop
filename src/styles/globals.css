@@ -72,3 +72,13 @@ a {
 .active {
   color: var(--primary);
 }
+
+@media print {
+  td {
+    padding: 4px !important;
+  }
+
+  footer h1 {
+    display: none;
+  }
+}

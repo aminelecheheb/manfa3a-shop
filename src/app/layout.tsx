@@ -7,7 +7,7 @@ import ToggleNav from "@/components/ToggleNav";
 import { getCategories } from "@/lib/category";
 
 export const metadata: Metadata = {
-  title: "Manfa3a Shop",
+  title: "Weal Shop",
   description: "best products for best prices",
 };
 

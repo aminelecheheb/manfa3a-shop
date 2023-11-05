@@ -93,4 +93,24 @@
   .table th {
     border: 1px solid black;
   }
+  /* .tabs {
+    display: none;
+  } */
+
+  .tab {
+    display: none;
+    border: none;
+    font-weight: 700;
+  }
+
+  .tab.active {
+    display: block;
+  }
+  .btn {
+    display: none;
+  }
+
+  .totale {
+    display: none;
+  }
 }
