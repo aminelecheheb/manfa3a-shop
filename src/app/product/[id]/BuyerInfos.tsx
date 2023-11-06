@@ -3,8 +3,7 @@ import styles from "@/styles/Product.module.css";
 import { useState, useRef } from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { createOrderAction } from "@/_actions";
-import { log } from "console";
-import Link from "next/link";
+import { useFormStatus } from "react-dom";
 
 type AlertType = {
   showAlert: boolean;
@@ -177,9 +176,7 @@ const BuyerInfos = ({
             اشتر الان
           </button>
           <div className={styles.fixed_action}>
-            <button className={styles.btn_fixed} type="submit">
-              اشتر الان
-            </button>
+            <SubmitBtn />
           </div>
           {alert.showAlert && alert.type === "danger" && (
             <h3 className={styles.alert_danger}>
@@ -224,6 +221,17 @@ const AlertModel = ({
         </button>
       </div>
     </div>
+  );
+};
+
+const SubmitBtn = () => {
+  const { pending } = useFormStatus();
+  console.log(pending);
+
+  return (
+    <button disabled={pending} className={styles.action_btn} type="submit">
+      اشتر الان
+    </button>
   );
 };
 
