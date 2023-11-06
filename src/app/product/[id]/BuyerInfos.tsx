@@ -99,7 +99,13 @@ const BuyerInfos = ({
             <input type="text" name="fName" placeholder="الاسم" required />
             <input type="text" name="lName" placeholder="اللقب" required />
           </div>
-          <input type="text" name="phone" placeholder="رقم الهاتف" required />
+          <input
+            pattern="^(00213|\+213|0)(5|6|7)[0-9]{8}$"
+            type="text"
+            name="phone"
+            placeholder="رقم الهاتف"
+            required
+          />
           <input
             type="text"
             name="adress"
