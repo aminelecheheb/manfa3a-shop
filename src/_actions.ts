@@ -64,7 +64,8 @@ export const createOrderAction = async (
   lastName: string,
   phoneNumber: string,
   adress: string,
-  productId: number,
+  productName: string,
+  productPrice: number,
   livraison: string,
   quantity: number,
   color: string | null
@@ -75,7 +76,8 @@ export const createOrderAction = async (
       lastName,
       phoneNumber,
       adress,
-      productId,
+      productName,
+      productPrice,
       livraison,
       quantity,
       color

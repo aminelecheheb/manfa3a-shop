@@ -11,12 +11,12 @@ type Orders =
       lastName: string;
       phoneNumber: string;
       adress: string;
-      productId: number;
+      productName: string;
+      productPrice: number;
       livraison: string;
       color: string | null;
       quantity: number;
       state: string;
-      product: { id: number; title: string; price: number };
     }[]
   | { error: unknown };
 

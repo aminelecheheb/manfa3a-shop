@@ -5,7 +5,8 @@ export async function createOrder(
   lastName: string,
   phoneNumber: string,
   adress: string,
-  productId: number,
+  productName: string,
+  productPrice: number,
   livraison: string,
   quantity: number,
   color: string | null
@@ -17,7 +18,8 @@ export async function createOrder(
         lastName,
         phoneNumber,
         adress,
-        productId,
+        productName,
+        productPrice,
         livraison,
         quantity,
         color,
@@ -34,15 +36,6 @@ export const getOrders = async (state: string) => {
     const orders = await prisma.order.findMany({
       where: { state },
       orderBy: { updatedAt: "desc" },
-      include: {
-        product: {
-          select: {
-            id: true,
-            title: true,
-            price: true,
-          },
-        },
-      },
     });
     return orders;
   } catch (error) {

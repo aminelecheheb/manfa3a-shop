@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { deleteProductAction, publishProductAction } from "@/_actions";
 import Link from "next/link";
+import { useState } from "react";
 
 const Product = ({ product }: { product: ProductProps }) => {
   const { status } = useSession();
@@ -53,6 +54,7 @@ const AdminActions = ({
   published: boolean;
   id: number;
 }) => {
+  const [loadingDelete, setLoadingDelete] = useState(false);
   const handlePublish = async (id: number) => {
     const product = await publishProductAction(id, true);
   };
@@ -60,9 +62,17 @@ const AdminActions = ({
   const handleUnpublish = async (id: number) => {
     const product = await publishProductAction(id, false);
   };
+
+  const handleDelete = async (id: number) => {
+    setLoadingDelete(true);
+    await deleteProductAction(id);
+    setLoadingDelete(false);
+  };
   return (
     <div className={styles.admin_actions}>
-      <button onClick={() => deleteProductAction(id)}>delete</button>
+      <button disabled={loadingDelete} onClick={() => deleteProductAction(id)}>
+        {loadingDelete ? "loading" : "delete"}
+      </button>
       <button>edit</button>
       {published ? (
         <button onClick={() => handleUnpublish(id)}>unpublish</button>

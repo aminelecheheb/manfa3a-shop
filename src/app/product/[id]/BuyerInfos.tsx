@@ -14,10 +14,12 @@ type AlertType = {
 
 const BuyerInfos = ({
   colors,
-  productId,
+  productName,
+  productPrice,
 }: {
   colors: string[];
-  productId: number;
+  productName: string;
+  productPrice: number;
 }) => {
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState(colors[0]);
@@ -54,10 +56,13 @@ const BuyerInfos = ({
     const adress = data.get("adress");
     if (typeof adress !== "string" || !adress) return;
 
-    if (typeof productId !== "number" || !productId) return;
+    // if (typeof productId !== "number" || !productId) return;
+    if (typeof productName !== "string" || !productName) return;
+
+    if (typeof productPrice !== "number" || !productPrice) return;
 
     const livraison = data.get("livraison");
-    console.log(`livraison : ${livraison}`);
+
     if (typeof livraison !== "string" || !livraison) return;
 
     if (typeof quantity !== "number") return;
@@ -67,7 +72,8 @@ const BuyerInfos = ({
       lastName,
       phoneNumber,
       adress,
-      productId,
+      productName,
+      productPrice,
       livraison,
       quantity,
       selectedColor

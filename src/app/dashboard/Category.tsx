@@ -3,7 +3,6 @@
 import { deleteCategoryAction } from "@/_actions";
 import styles from "@/styles/Dashboard.module.css";
 import { useState } from "react";
-import { useFormStatus } from "react-dom";
 
 type CategoryType = {
   id: number;

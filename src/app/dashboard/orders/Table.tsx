@@ -10,12 +10,12 @@ type Orders =
       lastName: string;
       phoneNumber: string;
       adress: string;
-      productId: number;
+      productName: string;
+      productPrice: number;
       livraison: string;
       color: string | null;
       quantity: number;
       state: string;
-      product: { id: number; title: string; price: number };
     }[]
   | { error: unknown };
 
@@ -48,19 +48,15 @@ const Table = ({
             </thead>
             <tbody>
               {orders.map((order) => {
-                const { product } = order;
-                totale = totale + product.price * order.quantity;
+                totale = totale + order.productPrice * order.quantity;
                 const cancelOrder = async () => {
                   const result = await updateOrderAction(order.id, "canceled");
-                  // console.log(result);
                 };
                 const confirmOrder = async () => {
                   const result = await updateOrderAction(order.id, "confirmed");
-                  // console.log(result);
                 };
                 const recievedOrder = async () => {
                   const result = await updateOrderAction(order.id, "recieved");
-                  // console.log(result);
                 };
 
                 const onDeleveryOrder = async () => {
@@ -84,10 +80,10 @@ const Table = ({
                     <td> {order.phoneNumber} </td>
                     <td>{order.adress}</td>
                     <td> {order.livraison} </td>
-                    <td>{product.title}</td>
+                    <td>{order.productName}</td>
                     <td> {order.color ?? "المتوفر"} </td>
                     <td> {order.quantity} </td>
-                    <td> {order.quantity * product.price} دج</td>
+                    <td>{order.quantity * order.productPrice} دج</td>
                     {activeTab === "new orders" && (
                       <>
                         <td className={styles.btn_td}>
