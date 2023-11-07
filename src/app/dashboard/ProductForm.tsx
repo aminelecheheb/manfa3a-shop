@@ -4,8 +4,12 @@ import styles from "@/styles/Dashboard.module.css";
 import { useRef, useState } from "react";
 import { createProductAction } from "@/_actions";
 import { useFormStatus } from "react-dom";
-
 import MDEditor from "@uiw/react-md-editor";
+
+const isValidURL = (url: string) => {
+  const urlPattern = /^(http|https):\/\/\S+\.(jpeg|jpg|gif|png)$/i;
+  return urlPattern.test(url);
+};
 
 const ProductForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -23,6 +27,13 @@ const ProductForm = () => {
 
     const images = data.get("images");
     if (typeof images !== "string" || !images) return;
+    const imagesArr = images.split(",");
+    let validImages = imagesArr?.filter((image: string) => {
+      return isValidURL(image);
+    });
+    if (validImages.length === 0) return;
+    const newImages = validImages.toString();
+    // console.log(newImages);
 
     const categoryId = data.get("categoryId");
     if (typeof categoryId !== "string" || !categoryId) return;
@@ -40,7 +51,7 @@ const ProductForm = () => {
       title,
       description,
       attribute,
-      images,
+      newImages,
       price,
       oldPrice,
       colors,
