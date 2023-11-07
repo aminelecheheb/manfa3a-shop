@@ -1,19 +1,21 @@
 "use client";
 
 import styles from "@/styles/Dashboard.module.css";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { createProductAction } from "@/_actions";
 import { useFormStatus } from "react-dom";
-import { log } from "util";
+
+import MDEditor from "@uiw/react-md-editor";
 
 const ProductForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
+  const [value, setValue] = useState<string | undefined>("");
 
   async function action(data: FormData) {
     const title = data.get("title");
     if (typeof title !== "string" || !title) return;
 
-    const description = data.get("description");
+    const description = value;
     if (typeof description !== "string" || !description) return;
 
     const attribute = data.get("attribute");
@@ -47,16 +49,15 @@ const ProductForm = () => {
     formRef.current?.reset();
     // console.log(product);
   }
+
   return (
-    <div>
+    <div data-color-mode="light">
       <h2>create new product</h2>
       <form ref={formRef} className={styles.newProduct_form} action={action}>
         <input type="text" name="title" placeholder="title" required />
-        <textarea
-          name="description"
-          placeholder="description"
-          required
-        ></textarea>
+        <div>
+          <MDEditor value={value} onChange={setValue} />
+        </div>
         <input type="text" name="attribute" placeholder="attribute" />
         <textarea name="images" placeholder="images urls" required></textarea>
         <input name="price" type="number" placeholder="price" required />
