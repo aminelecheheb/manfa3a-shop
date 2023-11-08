@@ -62,7 +62,7 @@ const ProductForm = () => {
   }
 
   return (
-    <div data-color-mode="light">
+    <div data-color-mode="light" className={styles.newProduct}>
       <h2>create new product</h2>
       <form ref={formRef} className={styles.newProduct_form} action={action}>
         <input type="text" name="title" placeholder="title" required />

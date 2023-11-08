@@ -40,9 +40,9 @@ const Product = ({ product }: { product: ProductProps }) => {
 const UserActions = ({ productId }: { productId: number }) => {
   return (
     <div className={styles.user_actions}>
-      {/* <Link className={styles.buy_now} href={`/product/${productId}`}>
+      <Link className={styles.buy_now} href={`/product/${productId}`}>
         <h4>اشتر الان</h4>
-      </Link> */}
+      </Link>
     </div>
   );
 };
@@ -70,14 +70,25 @@ const AdminActions = ({
   };
   return (
     <div className={styles.admin_actions}>
-      <button disabled={loadingDelete} onClick={() => deleteProductAction(id)}>
+      <button
+        className={styles.delete}
+        disabled={loadingDelete}
+        onClick={() => handleDelete(id)}
+      >
         {loadingDelete ? "loading" : "delete"}
       </button>
-      <button>edit</button>
+      <button className={styles.edit}>edit</button>
       {published ? (
-        <button onClick={() => handleUnpublish(id)}>unpublish</button>
+        <button
+          className={styles.unpublish}
+          onClick={() => handleUnpublish(id)}
+        >
+          unpublish
+        </button>
       ) : (
-        <button onClick={() => handlePublish(id)}>publish</button>
+        <button className={styles.publish} onClick={() => handlePublish(id)}>
+          publish
+        </button>
       )}
     </div>
   );

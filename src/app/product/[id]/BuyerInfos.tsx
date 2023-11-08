@@ -229,7 +229,7 @@ const SubmitBtn = () => {
   console.log(pending);
 
   return (
-    <button disabled={pending} className={styles.action_btn} type="submit">
+    <button disabled={pending} className={styles.btn_fixed} type="submit">
       اشتر الان
     </button>
   );
