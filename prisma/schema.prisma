@@ -30,8 +30,7 @@ model Product {
   colors String?
   published  Boolean    @default(false)
   category Category? @relation(fields: [categoryId], references: [id])
-  categoryId Int
-  // orders Order[]
+  categoryId Int?
 }
 
 model Category {
@@ -48,8 +47,6 @@ model Order {
   lastName String
   phoneNumber String
   adress String
-  // product   Product @relation(fields: [productId], references: [id])
-  // productId Int
   productName String
   productPrice Int
   livraison String
