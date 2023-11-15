@@ -179,7 +179,9 @@ const BuyerInfos = ({
               </select>
             )}
           </div>
-
+          {alert.showAlert && alert.type === "wilaya" && (
+            <p className={styles.wilaya_alert}>اختر الولاية</p>
+          )}
           <h2>نوع التوصيل</h2>
           <div className={styles.livraison_container}>
             <div className={styles.radio}>

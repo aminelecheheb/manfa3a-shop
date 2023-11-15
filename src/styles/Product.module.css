@@ -186,6 +186,21 @@
   flex-direction: row-reverse;
 }
 
+.adress_container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.adress_container select {
+  flex-basis: 50%;
+  background-color: transparent;
+  border: 1px solid var(--primary);
+  padding: 0.5rem 0.8rem;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
 .quantity div {
   border: 1px solid var(--primary);
   width: 3rem;
@@ -245,6 +260,11 @@
 
 .alert_data {
   padding: 1rem;
+}
+
+.wilaya_alert {
+  color: var(--danger);
+  font-weight: 700;
 }
 
 .alert_actions {
