@@ -12,9 +12,10 @@ const CategoryForm = () => {
     // setLoading(true);
     const categoryInput = data.get("category");
     if (typeof categoryInput !== "string" || !categoryInput) return;
-    await createCategoryAction(categoryInput);
+    const res = await createCategoryAction(categoryInput);
     formRef.current?.reset();
     // setLoading(false);
+    console.log(res);
   }
 
   return (
@@ -22,8 +23,7 @@ const CategoryForm = () => {
       <h2>Create new category</h2>
       <form ref={formRef} action={action} className={styles.newCategory_form}>
         <input type="text" name="category" />
-        {/* <SubmitBtn /> */}
-        <button>submit</button>
+        <SubmitBtn />
       </form>
     </div>
   );
