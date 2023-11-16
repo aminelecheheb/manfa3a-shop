@@ -3,6 +3,7 @@ import { revalidatePath } from "next/cache";
 import { createCategory, deleteCategory } from "./lib/category";
 import { createProduct, deleteProduct, publishProduct } from "./lib/product";
 import { createOrder, updateOrder } from "./lib/order";
+import { createUser } from "./lib/auth";
 
 export async function createCategoryAction(category: string) {
   const data = await createCategory(category);
@@ -97,3 +98,12 @@ export const updateOrderAction = async (id: number, payload: string) => {
     return error;
   }
 };
+
+export async function createUserAction(
+  name: string,
+  email: string,
+  password: string
+) {
+  const data = await createUser(name, email, password);
+  return data;
+}
