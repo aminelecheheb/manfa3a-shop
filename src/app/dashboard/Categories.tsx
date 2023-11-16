@@ -3,14 +3,14 @@ import styles from "@/styles/Dashboard.module.css";
 import Category from "./Category";
 
 const Categories = async () => {
-  const categories = await getCategories();
+  const { categories } = await getCategories();
 
   return (
     <div className={styles.categories_container}>
       <h2>Categories</h2>
       <div className={styles.categories}>
-        {categories.categories ? (
-          categories.categories?.map((category) => {
+        {categories ? (
+          categories?.map((category) => {
             return <Category key={category.id} category={category} />;
           })
         ) : (
