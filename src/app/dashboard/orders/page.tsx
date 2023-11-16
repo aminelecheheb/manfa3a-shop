@@ -10,16 +10,22 @@ const page = async () => {
   const returnedOrders = await getOrders("returned");
   const onDeleveryOrders = await getOrders("on delevery");
 
+  // console.log(newOrders);
+
   return (
     <main>
       <div className="container">
         <ClientContainer
-          newOrders={newOrders}
-          confirmedOrders={confirmedOrders}
-          recievedOrders={recievedOrders}
-          canceledOrders={canceledOrders}
-          onDeleveryOrders={onDeleveryOrders}
-          returnedOrders={returnedOrders}
+          newOrders={Array.isArray(newOrders) ? newOrders : []}
+          confirmedOrders={
+            Array.isArray(confirmedOrders) ? confirmedOrders : []
+          }
+          recievedOrders={Array.isArray(recievedOrders) ? recievedOrders : []}
+          canceledOrders={Array.isArray(canceledOrders) ? canceledOrders : []}
+          onDeleveryOrders={
+            Array.isArray(onDeleveryOrders) ? onDeleveryOrders : []
+          }
+          returnedOrders={Array.isArray(returnedOrders) ? returnedOrders : []}
         />
       </div>
     </main>
