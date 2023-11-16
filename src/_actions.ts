@@ -8,7 +8,7 @@ import { createUser } from "./lib/auth";
 export async function createCategoryAction(category: string) {
   const res = await createCategory(category);
   revalidatePath("/dashboard");
-  return res;
+  return { res };
 }
 
 export const deleteCategoryAction = async (id: number) => {
