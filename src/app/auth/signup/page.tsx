@@ -3,7 +3,7 @@
 import { createUserAction } from "@/_actions";
 // import { User } from "@/app/user";
 import { useRef } from "react";
-// import { signIn } from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 const Signup = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -19,10 +19,10 @@ const Signup = () => {
     if (typeof password !== "string" || !password) return;
 
     const d = await createUserAction(name, email, password);
-    // if (d.user) {
-    //   await signIn("credentials", { email, password, callbackUrl: "/" });
-    //   formRef.current?.reset();
-    // }
+    if (d.user) {
+      await signIn("credentials", { email, password, callbackUrl: "/" });
+      formRef.current?.reset();
+    }
     console.log(d);
   }
 
