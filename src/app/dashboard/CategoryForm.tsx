@@ -22,7 +22,8 @@ const CategoryForm = () => {
       <h2>Create new category</h2>
       <form ref={formRef} action={action} className={styles.newCategory_form}>
         <input type="text" name="category" />
-        <SubmitBtn />
+        {/* <SubmitBtn /> */}
+        <button>submit</button>
       </form>
     </div>
   );
