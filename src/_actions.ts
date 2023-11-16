@@ -6,9 +6,8 @@ import { createOrder, updateOrder } from "./lib/order";
 import { createUser } from "./lib/auth";
 
 export async function createCategoryAction(category: string) {
-  const data = await createCategory(category);
+  await createCategory(category);
   revalidatePath("/dashboard");
-  return data;
 }
 
 export const deleteCategoryAction = async (id: number) => {
