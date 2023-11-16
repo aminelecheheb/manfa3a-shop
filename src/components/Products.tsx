@@ -9,7 +9,7 @@ const Products = ({ products }: { products: ProductProps[] }) => {
           <h2>لا توجد اي عناصر</h2>
         ) : (
           products.map((product) => {
-            return <Product product={product} />;
+            return <Product key={product.id} product={product} />;
           })
         )}
       </div>

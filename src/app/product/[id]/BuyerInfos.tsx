@@ -43,7 +43,7 @@ const BuyerInfos = ({
       setTimeout(() => {
         clearAlert();
       }, 3000);
-  }, [alert.showAlert]);
+  }, [alert.showAlert, alert.type]);
 
   const increaseQuantity = () => {
     setQuantity(quantity + 1);
