@@ -103,6 +103,5 @@ export async function createUserAction(
   email: string,
   password: string
 ) {
-  const data = await createUser(name, email, password);
-  return data;
+  await createUser(name, email, password);
 }
