@@ -9,13 +9,10 @@ const CategoryForm = () => {
   // const [loading, setLoading] = useState(false);
 
   async function action(data: FormData) {
-    // setLoading(true);
     const categoryInput = data.get("category");
     if (typeof categoryInput !== "string" || !categoryInput) return;
-    const res = await createCategoryAction(categoryInput);
+    await createCategoryAction(categoryInput);
     formRef.current?.reset();
-    // setLoading(false);
-    console.log(res);
   }
 
   return (
