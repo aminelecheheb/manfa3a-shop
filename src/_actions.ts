@@ -79,23 +79,19 @@ export const createOrderAction = async (
   quantity: number,
   color: string | null
 ) => {
-  try {
-    const order = await createOrder(
-      firstName,
-      lastName,
-      phoneNumber,
-      adress,
-      productName,
-      productPrice,
-      livraison,
-      quantity,
-      color
-    );
-    revalidatePath("/dashboard/orders");
-    return order;
-  } catch (error) {
-    return { error };
-  }
+  const order = await createOrder(
+    firstName,
+    lastName,
+    phoneNumber,
+    adress,
+    productName,
+    productPrice,
+    livraison,
+    quantity,
+    color
+  );
+  revalidatePath("/dashboard/orders");
+  return order;
 };
 
 export const updateOrderAction = async (id: number, payload: string) => {
