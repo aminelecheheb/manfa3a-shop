@@ -22,7 +22,10 @@ import phone2 from "../../../public/2-phone.png";
 import phone3 from "../../../public/3-phone.png";
 
 const Slider = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(0);
+  useEffect(() => {
+    window && setWindowWidth(window.innerWidth);
+  }, []);
 
   const calculate = () => {
     if (typeof window !== "undefined") {
