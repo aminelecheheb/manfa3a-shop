@@ -18,7 +18,8 @@ import image1 from "../../../public/1.png";
 import image2 from "../../../public/2.png";
 import image3 from "../../../public/3.png";
 import phone1 from "../../../public/1-phone.png";
-import { FaWindows } from "react-icons/fa";
+import phone2 from "../../../public/2-phone.png";
+import phone3 from "../../../public/3-phone.png";
 
 const Slider = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -71,7 +72,7 @@ const Slider = () => {
             {windowWidth > 770 ? (
               <Image className={styles.img} fill alt="banner" src={image2} />
             ) : (
-              <Image className={styles.img} fill alt="banner" src={phone1} />
+              <Image className={styles.img} fill alt="banner" src={phone2} />
             )}
           </div>
         </SwiperSlide>
@@ -80,7 +81,7 @@ const Slider = () => {
             {windowWidth > 770 ? (
               <Image className={styles.img} fill alt="banner" src={image3} />
             ) : (
-              <Image className={styles.img} fill alt="banner" src={phone1} />
+              <Image className={styles.img} fill alt="banner" src={phone3} />
             )}
           </div>
         </SwiperSlide>
