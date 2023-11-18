@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -17,8 +17,24 @@ import styles from "@/styles/page.module.css";
 import image1 from "../../../public/1.png";
 import image2 from "../../../public/2.png";
 import image3 from "../../../public/3.png";
+import phone1 from "../../../public/1-phone.png";
+import { FaWindows } from "react-icons/fa";
 
 const Slider = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const calculate = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", calculate);
+    return () => {
+      window.removeEventListener("resize", calculate);
+    };
+  });
+
+  // console.log(windowWidth);
+
   return (
     <div className={styles.swiper_container}>
       <div className={styles.btn_container}>
@@ -43,17 +59,29 @@ const Slider = () => {
       >
         <SwiperSlide>
           <div className={styles.image_container}>
-            <Image className={styles.img} fill alt="banner" src={image1} />
+            {windowWidth > 770 ? (
+              <Image className={styles.img} fill alt="banner" src={image1} />
+            ) : (
+              <Image className={styles.img} fill alt="banner" src={phone1} />
+            )}
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className={styles.image_container}>
-            <Image className={styles.img} fill alt="banner" src={image2} />
+            {windowWidth > 770 ? (
+              <Image className={styles.img} fill alt="banner" src={image2} />
+            ) : (
+              <Image className={styles.img} fill alt="banner" src={phone1} />
+            )}
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className={styles.image_container}>
-            <Image className={styles.img} fill alt="banner" src={image3} />
+            {windowWidth > 770 ? (
+              <Image className={styles.img} fill alt="banner" src={image3} />
+            ) : (
+              <Image className={styles.img} fill alt="banner" src={phone1} />
+            )}
           </div>
         </SwiperSlide>
       </Swiper>
