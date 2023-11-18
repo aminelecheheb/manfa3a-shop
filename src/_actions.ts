@@ -8,11 +8,15 @@ import { createUser } from "./lib/auth";
 export async function createCategoryAction(category: string) {
   await createCategory(category);
   revalidatePath("/dashboard");
+  revalidatePath("/shop");
+  revalidatePath("/shop/[slug]");
 }
 
 export const deleteCategoryAction = async (id: number) => {
   const category = await deleteCategory(id);
   revalidatePath("/dashboard");
+  revalidatePath("/shop");
+  revalidatePath("/shop/[slug]");
   return category;
 };
 
@@ -51,11 +55,15 @@ export const createProductAction = async (
 export const deleteProductAction = async (id: number) => {
   await deleteProduct(id);
   revalidatePath("/dashboard");
+  revalidatePath("/shop");
+  revalidatePath("/shop/[slug]");
 };
 
 export const publishProductAction = async (id: number, published: boolean) => {
   await publishProduct(id, published);
   revalidatePath("/dashboard");
+  revalidatePath("/shop");
+  revalidatePath("/shop/[slug]");
 };
 
 // orders
@@ -82,6 +90,7 @@ export const createOrderAction = async (
       quantity,
       color
     );
+    revalidatePath("/dashboard/orders");
     return order;
   } catch (error) {
     return { error };
