@@ -17,6 +17,7 @@ export const deleteCategoryAction = async (id: number) => {
   revalidatePath("/dashboard");
   revalidatePath("/shop");
   revalidatePath("/shop/[slug]");
+  revalidatePath("/*");
   return category;
 };
 

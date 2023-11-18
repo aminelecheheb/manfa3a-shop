@@ -73,6 +73,10 @@ a {
   color: var(--primary);
 }
 
+button {
+  cursor: pointer;
+}
+
 @media print {
   td {
     padding: 4px !important;
