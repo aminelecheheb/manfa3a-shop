@@ -77,6 +77,10 @@ button {
   cursor: pointer;
 }
 
+.active_link {
+  background-color: var(--primary);
+}
+
 @media print {
   td {
     padding: 4px !important;
