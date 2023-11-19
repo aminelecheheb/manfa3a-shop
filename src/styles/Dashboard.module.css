@@ -17,6 +17,7 @@
 .actions {
   display: flex;
   flex-direction: column;
+  max-width: 50%;
 }
 
 .actions button {
@@ -243,6 +244,17 @@
 @media screen and (max-width: 1180px) {
   .product {
     flex-basis: calc(33% - 0.67rem);
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .flex {
+    flex-direction: column;
+  }
+
+  .actions {
+    max-width: 100%;
+    width: 100%;
   }
 }
 

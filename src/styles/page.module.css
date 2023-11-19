@@ -62,8 +62,21 @@
   transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
+.livraison_container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/1;
+}
+
+.livraison {
+  object-fit: cover;
+}
+
 @media screen and (max-width: 770px) {
   .image_container {
     aspect-ratio: 1/1.2;
+  }
+  .livraison_container {
+    aspect-ratio: 2/1;
   }
 }
