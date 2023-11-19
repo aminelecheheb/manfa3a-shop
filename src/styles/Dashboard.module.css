@@ -93,6 +93,11 @@
   justify-content: space-between;
 }
 
+.products > .product {
+  flex-basis: calc(50% - 0.5rem);
+  max-width: 300px;
+}
+
 .admin_actions {
   display: flex;
   gap: 4px;
@@ -244,6 +249,11 @@
 @media screen and (max-width: 1180px) {
   .product {
     flex-basis: calc(33% - 0.67rem);
+  }
+
+  .products > .product {
+    flex-basis: 100%;
+    max-width: 300px;
   }
 }
 
