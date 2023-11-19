@@ -1,6 +1,7 @@
 "use client";
 import { useGlobalContext } from "@/context/appContext";
 import styles from "@/styles/Layout.module.css";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -15,7 +16,7 @@ const ToggleNav = ({ categories }: { categories: CategoriesType }) => {
   const { state } = useGlobalContext();
   const { showNav } = state;
   const pathname = usePathname();
-  console.log(pathname);
+  const { status } = useSession();
 
   return (
     <aside
@@ -46,6 +47,23 @@ const ToggleNav = ({ categories }: { categories: CategoriesType }) => {
             </Link>
           );
         })}
+        {status === "authenticated" && (
+          <>
+            <h3 className={styles.admin_links}>Admin links</h3>
+            <Link
+              href="/dashboard"
+              className={`${pathname === "/dashboard" && styles.active_btn}`}
+            >
+              لوحة التحكم
+            </Link>
+            <Link
+              href={"/dashboard/orders"}
+              className={`${pathname.includes("orders") && styles.active_btn}`}
+            >
+              الطلبيات
+            </Link>
+          </>
+        )}
       </div>
     </aside>
   );

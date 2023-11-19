@@ -118,6 +118,11 @@
   padding: 8px 40px;
 }
 
+.admin_links {
+  text-align: center;
+  margin-top: 1rem;
+}
+
 @media screen and (max-width: 980px) {
   .links {
     display: none;

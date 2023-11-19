@@ -10,6 +10,7 @@ type Category = {
 
 const SidebarLinks = ({ categories }: { categories: Category[] }) => {
   const pathname = usePathname();
+
   return (
     <div className={styles.sidebar}>
       <Link href="/shop">
