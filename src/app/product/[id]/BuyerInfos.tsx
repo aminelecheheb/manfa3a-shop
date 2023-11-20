@@ -37,6 +37,8 @@ const BuyerInfos = ({
     setAlert({ showAlert: false, type: "", data: {} });
   };
 
+  console.log(colors);
+
   useEffect(() => {
     alert.showAlert &&
       alert.type === "wilaya" &&
@@ -212,9 +214,13 @@ const BuyerInfos = ({
               </label>
             </div>
           </div>
-          <h2>اختر اللون و الكمية</h2>
+          {colors.length >= 1 && colors[0] !== "" ? (
+            <h2>اختر اللون و الكمية</h2>
+          ) : (
+            <h2>اختر الكمية</h2>
+          )}
           <div className={styles.req_details}>
-            {colors.length >= 1 && (
+            {colors.length >= 1 && colors[0] !== "" && (
               <select
                 className={styles.color}
                 name="color"

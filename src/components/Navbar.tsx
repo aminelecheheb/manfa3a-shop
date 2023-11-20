@@ -33,7 +33,7 @@ const Navbar = () => {
             </Link>
             <Link href="/shop">
               <h3 className={`${pathname.includes("shop") && "active"}`}>
-                المتجر
+                منتجاتنا
               </h3>
             </Link>
             {/* {status !== "authenticated" ? (
