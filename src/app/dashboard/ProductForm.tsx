@@ -5,6 +5,8 @@ import { useRef, useState } from "react";
 import { createProductAction } from "@/_actions";
 import { useFormStatus } from "react-dom";
 import MDEditor from "@uiw/react-md-editor";
+import { useGlobalContext } from "@/context/appContext";
+import ConfirmeModel from "@/components/ConfirmeModel";
 
 const isValidURL = (url: string) => {
   const urlPattern = /^(http|https):\/\/\S+\.(jpeg|jpg|gif|png)$/i;
@@ -12,6 +14,10 @@ const isValidURL = (url: string) => {
 };
 
 const ProductForm = () => {
+  const { state } = useGlobalContext();
+  const { model } = state;
+  // console.log(model);
+
   const formRef = useRef<HTMLFormElement>(null);
   const [value, setValue] = useState<string | undefined>("");
 
@@ -63,6 +69,7 @@ const ProductForm = () => {
 
   return (
     <div data-color-mode="light" className={styles.newProduct}>
+      {model && <ConfirmeModel modelAction={() => {}} />}
       <h2>create new product</h2>
       <form ref={formRef} className={styles.newProduct_form} action={action}>
         <input type="text" name="title" placeholder="title" required />

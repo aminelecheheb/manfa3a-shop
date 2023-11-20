@@ -1,5 +1,6 @@
 type StateType = {
   showNav: boolean;
+  model: boolean;
 };
 
 type ActionType = {
@@ -10,4 +11,6 @@ type ActionType = {
 type ContextType = {
   state: StateType;
   toggleShowNav: () => void;
+  showModel: () => void;
+  hideModel: () => void;
 };

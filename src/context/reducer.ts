@@ -6,6 +6,18 @@ const reducer = (state: StateType, action: ActionType) => {
         showNav: !state.showNav,
       };
 
+    case "SHOW_MODEL":
+      return {
+        ...state,
+        model: true,
+      };
+
+    case "HIDE_MODEL":
+      return {
+        ...state,
+        model: false,
+      };
+
     default:
       return state;
   }

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { deleteProductAction, publishProductAction } from "@/_actions";
 import Link from "next/link";
 import { useState } from "react";
+import { useGlobalContext } from "@/context/appContext";
 
 const Product = ({ product }: { product: ProductProps }) => {
   const { status } = useSession();
@@ -68,12 +69,15 @@ const AdminActions = ({
     await deleteProductAction(id);
     setLoadingDelete(false);
   };
+
+  const { showModel } = useGlobalContext();
   return (
     <div className={styles.admin_actions}>
       <button
         className={styles.delete}
         disabled={loadingDelete}
-        onClick={() => handleDelete(id)}
+        // onClick={() => handleDelete(id)}
+        onClick={showModel}
       >
         {loadingDelete ? "loading" : "delete"}
       </button>

@@ -1,0 +1,32 @@
+.model_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--accent);
+  z-index: 5;
+  padding: 3rem 6rem;
+  border: 1px solid var(--primary);
+  border-radius: 20px;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.actions button {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.cancel {
+  background-color: var(--danger) !important;
+  color: white;
+}
+
+.confirme {
+  background-color: var(--success-dark) !important;
+}
