@@ -4,6 +4,7 @@ import styles from "@/styles/Layout.module.css";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { LogoutButton } from "./auth";
 
 type CategoriesType =
   | {
@@ -62,6 +63,7 @@ const ToggleNav = ({ categories }: { categories: CategoriesType }) => {
             >
               الطلبيات
             </Link>
+            <LogoutButton />
           </>
         )}
       </div>

@@ -22,13 +22,13 @@ const HomeSlider = ({ products }: { products: ProductProps[] }) => {
   useEffect(() => {
     window.innerWidth > 500
       ? setX(window.innerWidth / 400)
-      : setX(window.innerWidth / 300);
+      : setX(window.innerWidth / 250);
   }, []);
 
   const checkX = () => {
     window.innerWidth > 500
       ? setX(window.innerWidth / 400)
-      : setX(window.innerWidth / 300);
+      : setX(window.innerWidth / 250);
   };
 
   useEffect(() => {
