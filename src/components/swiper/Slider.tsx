@@ -11,6 +11,7 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import Link from "next/link";
 
 import Image from "next/image";
 import styles from "@/styles/page.module.css";
@@ -46,7 +47,9 @@ const Slider = () => {
     <div className={styles.swiper_container}>
       <div className={styles.btn_container}>
         <button className={styles.slider_btn}>
-          <span>اكتشف الان</span>
+          <Link href="/shop">
+            <span>اكتشف الان</span>
+          </Link>
         </button>
       </div>
 

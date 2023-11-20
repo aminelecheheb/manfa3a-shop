@@ -278,7 +278,20 @@
 
 @media screen and (max-width: 560px) {
   .product {
-    flex-basis: 80%;
+    flex-basis: calc(50% - 0.5rem);
     margin: 0 auto;
+  }
+  .products > .product {
+    flex-basis: calc(50% - 0.5rem);
+    margin: 0;
+    max-width: 300px;
+  }
+
+  .infos {
+    padding: 0;
+  }
+  .old_price {
+    display: block;
+    margin-bottom: 0;
   }
 }
