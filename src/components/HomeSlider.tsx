@@ -53,7 +53,7 @@ const HomeSlider = ({ products }: { products: ProductProps[] }) => {
         >
           {products.map((product) => {
             return (
-              <SwiperSlide>
+              <SwiperSlide key={product.id}>
                 <Product product={product} />
               </SwiperSlide>
             );
