@@ -72,6 +72,15 @@
   object-fit: cover;
 }
 
+.my_wrapper {
+  padding: 3rem 0;
+}
+
+.slider_title {
+  margin-bottom: 1rem;
+  color: var(--dark-blue);
+}
+
 @media screen and (max-width: 770px) {
   .image_container {
     aspect-ratio: 1/1.2;
