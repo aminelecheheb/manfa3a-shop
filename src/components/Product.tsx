@@ -7,9 +7,11 @@ import { deleteProductAction, publishProductAction } from "@/_actions";
 import Link from "next/link";
 import { useState } from "react";
 import { useGlobalContext } from "@/context/appContext";
-import { type } from "os";
+import { usePathname } from "next/navigation";
 
 const Product = ({ product }: { product: ProductProps }) => {
+  const pathname = usePathname();
+
   const { status } = useSession();
   const { id, title, price, attribute, images, published, oldPrice } = product;
   const imagesArr = images.split(",");
@@ -64,15 +66,19 @@ const AdminActions = ({
     const product = await publishProductAction(id, false);
   };
 
+  const pathname = usePathname();
+
   const { showModel } = useGlobalContext();
   return (
     <div className={styles.admin_actions}>
-      <button
-        className={styles.delete}
-        onClick={() => showModel("product", id)}
-      >
-        delete
-      </button>
+      {pathname === "/dashboard" && (
+        <button
+          className={styles.delete}
+          onClick={() => showModel("product", id)}
+        >
+          delete
+        </button>
+      )}
       <button className={styles.edit}>edit</button>
       {published ? (
         <button

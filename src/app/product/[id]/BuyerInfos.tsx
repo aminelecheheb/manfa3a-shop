@@ -76,8 +76,8 @@ const BuyerInfos = ({
     const firstName = data.get("fName");
     if (typeof firstName !== "string" || !firstName) return;
 
-    const lastName = data.get("lName");
-    if (typeof lastName !== "string" || !lastName) return;
+    // const lastName = data.get("lName");
+    // if (typeof lastName !== "string" || !lastName) return;
 
     const phoneNumber = data.get("phone");
     if (typeof phoneNumber !== "string" || !phoneNumber) return;
@@ -107,7 +107,6 @@ const BuyerInfos = ({
 
     const result = await createOrderAction(
       firstName,
-      lastName,
       phoneNumber,
       adress,
       productName,
@@ -134,17 +133,13 @@ const BuyerInfos = ({
       <div className={styles.buyer_infos_container}>
         <h2> معلومات المشتري</h2>
         <form ref={formRef} action={action} className={styles.form} id="form">
-          <div className={styles.flex}>
-            <input type="text" name="fName" placeholder="الاسم" required />
-            <input type="text" name="lName" placeholder="اللقب" required />
-          </div>
-          <input type="text" name="phone" placeholder="رقم الهاتف" required />
-          {/* <input
+          <input
             type="text"
-            name="adress"
-            placeholder="العنوان (البلدية و الولاية)"
+            name="fName"
+            placeholder=" الاسم و اللقب"
             required
-          /> */}
+          />
+          <input type="text" name="phone" placeholder="رقم الهاتف" required />
           <div className={styles.adress_container}>
             <select
               defaultValue={selectedWilaya}
@@ -289,7 +284,7 @@ const AlertModel = ({
       <div className={styles.alert_data}>
         <h4>معلومات الطلبية </h4>
         <p>الاسم : {data.firstName}</p>
-        <p>اللقب : {data.lastName}</p>
+        {/* <p>اللقب : {data.lastName}</p> */}
         <p>العنوان : {data.adress}</p>
         <p>
           نوع التوصيل :{" "}

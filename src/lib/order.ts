@@ -2,7 +2,7 @@ import { prisma } from "./prisma";
 
 export async function createOrder(
   firstName: string,
-  lastName: string,
+  // lastName: string,
   phoneNumber: string,
   adress: string,
   productName: string,
@@ -15,7 +15,7 @@ export async function createOrder(
     const order = await prisma.order.create({
       data: {
         firstName,
-        lastName,
+        // lastName,
         phoneNumber,
         adress,
         productName,

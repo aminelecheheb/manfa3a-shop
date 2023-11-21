@@ -70,7 +70,7 @@ export const publishProductAction = async (id: number, published: boolean) => {
 // orders
 export const createOrderAction = async (
   firstName: string,
-  lastName: string,
+  // lastName: string,
   phoneNumber: string,
   adress: string,
   productName: string,
@@ -81,7 +81,7 @@ export const createOrderAction = async (
 ) => {
   const order = await createOrder(
     firstName,
-    lastName,
+    // lastName,
     phoneNumber,
     adress,
     productName,

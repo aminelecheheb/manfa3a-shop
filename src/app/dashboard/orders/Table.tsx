@@ -7,7 +7,7 @@ type Orders =
   | {
       id: number;
       firstName: string;
-      lastName: string;
+      // lastName: string;
       phoneNumber: string;
       adress: string;
       productName: string;
@@ -36,7 +36,7 @@ const Table = ({
               <tr>
                 <th>رقم الطلبية</th>
                 <th>الاسم</th>
-                <th>اللقب</th>
+                {/* <th>اللقب</th> */}
                 <th>رقم الهاتف</th>
                 <th>العنوان</th>
                 <th>نوع التوصيل</th>
@@ -76,7 +76,7 @@ const Table = ({
                     {/* <td>{orders.indexOf(order) + 1}</td> */}
                     <td>{order.id}</td>
                     <td>{order.firstName}</td>
-                    <td> {order.lastName} </td>
+                    {/* <td> {order.lastName} </td> */}
                     <td> {order.phoneNumber} </td>
                     <td>{order.adress}</td>
                     <td> {order.livraison} </td>
@@ -154,7 +154,7 @@ const Table = ({
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
+                {/* <td></td> */}
                 <td></td>
                 <td></td>
                 <td></td>

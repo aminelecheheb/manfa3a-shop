@@ -8,7 +8,7 @@ type Orders =
   | {
       id: number;
       firstName: string;
-      lastName: string;
+      // lastName: string;
       phoneNumber: string;
       adress: string;
       productName: string;
