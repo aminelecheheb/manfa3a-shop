@@ -7,6 +7,7 @@ import { deleteProductAction, publishProductAction } from "@/_actions";
 import Link from "next/link";
 import { useState } from "react";
 import { useGlobalContext } from "@/context/appContext";
+import { type } from "os";
 
 const Product = ({ product }: { product: ProductProps }) => {
   const { status } = useSession();
@@ -55,7 +56,6 @@ const AdminActions = ({
   published: boolean;
   id: number;
 }) => {
-  const [loadingDelete, setLoadingDelete] = useState(false);
   const handlePublish = async (id: number) => {
     const product = await publishProductAction(id, true);
   };
@@ -64,22 +64,14 @@ const AdminActions = ({
     const product = await publishProductAction(id, false);
   };
 
-  const handleDelete = async (id: number) => {
-    setLoadingDelete(true);
-    await deleteProductAction(id);
-    setLoadingDelete(false);
-  };
-
   const { showModel } = useGlobalContext();
   return (
     <div className={styles.admin_actions}>
       <button
         className={styles.delete}
-        disabled={loadingDelete}
-        // onClick={() => handleDelete(id)}
-        onClick={showModel}
+        onClick={() => showModel("product", id)}
       >
-        {loadingDelete ? "loading" : "delete"}
+        delete
       </button>
       <button className={styles.edit}>edit</button>
       {published ? (

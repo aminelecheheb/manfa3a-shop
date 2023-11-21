@@ -3,7 +3,11 @@ import reducer from "./reducer";
 
 const initialState = {
   showNav: false,
-  model: false,
+  model: {
+    model: false,
+    type: "",
+    id: 0,
+  },
 };
 
 const AppContext = React.createContext<ContextType>({
@@ -20,8 +24,8 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     dispatch({ type: "TOGGLE_SHOW_NAV" });
   };
 
-  const showModel = () => {
-    dispatch({ type: "SHOW_MODEL" });
+  const showModel = (type: string, id: number) => {
+    dispatch({ type: "SHOW_MODEL", payload: { type, id } });
   };
 
   const hideModel = () => {

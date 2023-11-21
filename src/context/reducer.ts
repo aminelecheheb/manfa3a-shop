@@ -9,13 +9,21 @@ const reducer = (state: StateType, action: ActionType) => {
     case "SHOW_MODEL":
       return {
         ...state,
-        model: true,
+        model: {
+          model: true,
+          type: action.payload.type,
+          id: action.payload.id,
+        },
       };
 
     case "HIDE_MODEL":
       return {
         ...state,
-        model: false,
+        model: {
+          model: false,
+          type: "",
+          id: 0,
+        },
       };
 
     default:
