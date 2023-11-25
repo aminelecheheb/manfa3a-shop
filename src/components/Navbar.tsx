@@ -7,6 +7,8 @@ import { usePathname } from "next/navigation";
 import { useGlobalContext } from "@/context/appContext";
 import { useSession } from "next-auth/react";
 import { LogoutButton } from "./auth";
+import Image from "next/image";
+import logo from "../../public/logo.png";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -18,11 +20,14 @@ const Navbar = () => {
       <div className="container">
         <div className={styles.nav_flex}>
           <div className={styles.logo}>
-            <div>
+            {/* <div>
               <h3 className={styles.logo}>منفعة شوب</h3>
               <h3>Weal Shop</h3>
             </div>
-            <FaShopify className={styles.icon} />
+            <FaShopify className={styles.icon} /> */}
+            <div className={styles.logo_container}>
+              <Image src={logo} fill alt="logo" className={styles.logo_img} />
+            </div>
           </div>
 
           <div className={styles.links}>

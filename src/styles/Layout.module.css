@@ -1,7 +1,7 @@
 .navbar {
   background-color: var(--dark-blue);
   color: var(--white);
-  padding: 1rem 0;
+  padding: 0.8rem 0;
   text-wrap: nowrap;
   z-index: 99;
 }
@@ -19,6 +19,16 @@
   flex-direction: row-reverse;
   align-items: center;
   gap: 0.7rem;
+}
+.logo_container {
+  position: relative;
+  overflow: hidden;
+  height: 70px;
+  aspect-ratio: 2/1;
+}
+
+.logo_img {
+  object-fit: contain;
 }
 
 .logo .icon {
@@ -170,6 +180,10 @@
 @media screen and (max-width: 680px) {
   .infos {
     display: none;
+  }
+
+  .logo_container {
+    height: 50px;
   }
 }
 
