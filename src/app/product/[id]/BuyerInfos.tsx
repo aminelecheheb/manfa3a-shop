@@ -8,6 +8,12 @@ import { useFormStatus } from "react-dom";
 import { wilayas, communes, getCommunes, prices } from "@/wilaya";
 import { useGlobalContext } from "@/context/appContext";
 
+type Prices = {
+  [key: string]: number;
+};
+
+const myPrices: Prices = prices;
+
 type AlertType = {
   showAlert: boolean;
   type: string;
@@ -75,7 +81,9 @@ const BuyerInfos = ({
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value: string = e.target.value;
     setSelectedWilaya(value);
-    setDeliveryPrice(prices[value]);
+
+    // const myIndex: keyof typeof myPrices = value;
+    setDeliveryPrice(myPrices[value]);
   };
 
   const handleSelectCommunes = (e: React.ChangeEvent<HTMLSelectElement>) => {
