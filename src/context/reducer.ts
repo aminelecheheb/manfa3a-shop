@@ -26,6 +26,18 @@ const reducer = (state: StateType, action: ActionType) => {
         },
       };
 
+    case "SET_DELIVERY_PRICE_GLOBAL":
+      return {
+        ...state,
+        deliveryPriceGlobal: action.payload,
+      };
+
+    case "SET_QUANTITY_GLOBAL":
+      return {
+        ...state,
+        quantityGlobal: action.payload,
+      };
+
     default:
       return state;
   }

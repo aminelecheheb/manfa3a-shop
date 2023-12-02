@@ -3,7 +3,9 @@ import { getProductById } from "@/lib/product";
 import styles from "@/styles/Product.module.css";
 import DisplayImages from "./DisplayImages";
 import BuyerInfos from "./BuyerInfos";
+import Resume from "./Resume";
 import Markdown from "react-markdown";
+import Medias from "./Medias";
 
 const page = async ({ params }: { params: { id: string } }) => {
   const { product } = await getProductById(params.id);
@@ -26,15 +28,19 @@ const page = async ({ params }: { params: { id: string } }) => {
               </div>
               <Markdown>{description}</Markdown>
             </div>
-            <div className={styles.buyer_info}>
-              <BuyerInfos
-                colors={colorsArr}
-                productName={title}
-                productPrice={price}
-              />
+            <div className={styles.buyer_resume_container}>
+              <div className={styles.buyer_info}>
+                <BuyerInfos
+                  colors={colorsArr}
+                  productName={title}
+                  productPrice={price}
+                />
+              </div>
+              <Resume title={title} price={price} />
             </div>
           </div>
         </div>
+        {imagesArr.length > 1 && <Medias images={imagesArr} />}
       </main>
     );
   } else

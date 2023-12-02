@@ -8,6 +8,8 @@ const initialState = {
     type: "",
     id: 0,
   },
+  deliveryPriceGlobal: 0,
+  quantityGlobal: 1,
 };
 
 const AppContext = React.createContext<ContextType>({
@@ -15,6 +17,8 @@ const AppContext = React.createContext<ContextType>({
   toggleShowNav: () => {},
   showModel: () => {},
   hideModel: () => {},
+  setDeliveryPriceGlobal: () => {},
+  setQuantityGlobal: () => {},
 });
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
@@ -32,6 +36,14 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     dispatch({ type: "HIDE_MODEL" });
   };
 
+  const setDeliveryPriceGlobal = (price: number) => {
+    dispatch({ type: "SET_DELIVERY_PRICE_GLOBAL", payload: price });
+  };
+
+  const setQuantityGlobal = (quantity: number) => {
+    dispatch({ type: "SET_QUANTITY_GLOBAL", payload: quantity });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -39,6 +51,8 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
         toggleShowNav,
         showModel,
         hideModel,
+        setDeliveryPriceGlobal,
+        setQuantityGlobal,
       }}
     >
       {children}

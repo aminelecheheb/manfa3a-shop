@@ -10,7 +10,7 @@ const DisplayImages = ({ images }: { images: string[] }) => {
       <div className={styles.big_image_container}>
         <Image fill src={bigImage} alt="product image" />
       </div>
-      <div className={styles.small_images}>
+      {/* <div className={styles.small_images}>
         {images.map((image) => {
           return (
             <div
@@ -26,7 +26,7 @@ const DisplayImages = ({ images }: { images: string[] }) => {
             </div>
           );
         })}
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -5,7 +5,8 @@ import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { createOrderAction } from "@/_actions";
 import { useFormStatus } from "react-dom";
 
-import { wilayas, communes, getCommunes } from "@/wilaya";
+import { wilayas, communes, getCommunes, prices } from "@/wilaya";
+import { useGlobalContext } from "@/context/appContext";
 
 type AlertType = {
   showAlert: boolean;
@@ -24,9 +25,11 @@ const BuyerInfos = ({
 }) => {
   const [selectedWilaya, setSelectedWilaya] = useState("");
   const [selectedCommune, setSelectedCommune] = useState("");
+  const [deliveryPrice, setDeliveryPrice] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [allCommunes, setAllCommunes] = useState(communes);
+  const [pricesf, setPricesf] = useState(prices);
   const [alert, setAlert] = useState({
     showAlert: false,
     type: "",
@@ -37,7 +40,7 @@ const BuyerInfos = ({
     setAlert({ showAlert: false, type: "", data: {} });
   };
 
-  console.log(colors);
+  // console.log(colors);
 
   useEffect(() => {
     alert.showAlert &&
@@ -60,9 +63,19 @@ const BuyerInfos = ({
     setAllCommunes(communes);
   }, [selectedWilaya]);
 
+  const { setDeliveryPriceGlobal, setQuantityGlobal } = useGlobalContext();
+  useEffect(() => {
+    setDeliveryPriceGlobal(deliveryPrice);
+  }, [deliveryPrice]);
+
+  useEffect(() => {
+    setQuantityGlobal(quantity);
+  }, [quantity]);
+
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value;
+    const value: string = e.target.value;
     setSelectedWilaya(value);
+    setDeliveryPrice(prices[value]);
   };
 
   const handleSelectCommunes = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -131,7 +144,7 @@ const BuyerInfos = ({
   } else {
     return (
       <div className={styles.buyer_infos_container}>
-        <h2> معلومات المشتري</h2>
+        <h3 className={styles.align_center}> اضف معلوماتك لطلب هذا المنتج</h3>
         <form ref={formRef} action={action} className={styles.form} id="form">
           <input
             type="text"
@@ -157,7 +170,7 @@ const BuyerInfos = ({
                 );
               })}
             </select>
-            {communes.length > 0 && selectedWilaya !== "" && (
+            {communes.length > 0 && selectedWilaya !== "" ? (
               <select
                 defaultValue="choose"
                 name="communes"
@@ -174,12 +187,23 @@ const BuyerInfos = ({
                   );
                 })}
               </select>
+            ) : (
+              <select disabled defaultValue="choose" name="communes">
+                <option value="choose" disabled>
+                  اختر البلدية (اختياري)
+                </option>
+              </select>
+            )}
+            {selectedWilaya && (
+              <h4 className={styles.delivery_price}>
+                التوصيل لباب المنزل {deliveryPrice} دج
+              </h4>
             )}
           </div>
           {alert.showAlert && alert.type === "wilaya" && (
             <p className={styles.wilaya_alert}>اختر الولاية</p>
           )}
-          <h2>نوع التوصيل</h2>
+          {/* <h2>نوع التوصيل</h2>
           <div className={styles.livraison_container}>
             <div className={styles.radio}>
               <input
@@ -208,14 +232,14 @@ const BuyerInfos = ({
                 <h3>800 دج</h3>
               </label>
             </div>
-          </div>
-          {colors.length >= 1 && colors[0] !== "" ? (
+          </div> */}
+          {/* {colors.length >= 1 && colors[0] !== "" ? (
             <h2>اختر اللون و الكمية</h2>
           ) : (
             <h2>اختر الكمية</h2>
-          )}
+          )} */}
           <div className={styles.req_details}>
-            {colors.length >= 1 && colors[0] !== "" && (
+            {/* {colors.length >= 1 && colors[0] !== "" && (
               <select
                 className={styles.color}
                 name="color"
@@ -231,14 +255,13 @@ const BuyerInfos = ({
                   );
                 })}
               </select>
-            )}
+            )} */}
             <div className={styles.quantity}>
               <div onClick={decreaseQuantity}>
                 <span>
                   <AiOutlineMinus />
                 </span>
               </div>
-
               <div>
                 <span className={styles.number}>{quantity}</span>
               </div>
@@ -248,10 +271,10 @@ const BuyerInfos = ({
                 </span>
               </div>
             </div>
+            <button className={styles.action_btn} type="submit">
+              اطلب الان
+            </button>
           </div>
-          <button className={styles.action_btn} type="submit">
-            اشتر الان
-          </button>
           <div className={styles.fixed_action}>
             <SubmitBtn />
           </div>

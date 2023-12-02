@@ -1,6 +1,8 @@
 type StateType = {
   showNav: boolean;
   model: ModelType;
+  deliveryPriceGlobal: number;
+  quantityGlobal: number;
 };
 
 type ActionType = {
@@ -13,6 +15,8 @@ type ContextType = {
   toggleShowNav: () => void;
   showModel: (type: string, id: number) => void;
   hideModel: () => void;
+  setDeliveryPriceGlobal: (price: number) => void;
+  setQuantityGlobal: (quantity: number) => void;
 };
 
 type ModelType = {

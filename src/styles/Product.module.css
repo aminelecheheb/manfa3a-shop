@@ -99,9 +99,14 @@
   text-decoration: line-through;
 }
 
-.buyer_info {
-  padding: 3rem 1rem;
+.buyer_resume_container {
   flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.buyer_info {
+  padding: 1rem;
   background-color: var(--accent);
   border: 1px solid var(--primary);
   border-radius: 20px;
@@ -111,6 +116,10 @@
 .buyer_infos_container {
   width: 85%;
   margin: 0 auto;
+}
+
+.align_center {
+  text-align: center;
 }
 
 .form {
@@ -203,7 +212,7 @@
 
 .quantity div {
   border: 1px solid var(--primary);
-  width: 3rem;
+  width: 2.3rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -233,15 +242,16 @@
 }
 
 .action_btn {
-  padding: 0.9rem 1rem;
+  padding: 0.5rem 1rem;
   background-color: var(--primary);
   border: none;
   color: var(--dark_blue);
   font-size: 1.1rem;
   font-weight: 700;
-  border-radius: 30px;
-  margin-top: 2rem;
+  border-radius: 12px;
+  /* margin-top: 2rem; */
   cursor: pointer;
+  flex-grow: 1;
 }
 
 .alert_danger {
@@ -292,6 +302,58 @@
   cursor: pointer;
 }
 
+.medias_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.media_container {
+  flex-basis: 50%;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/3.5;
+}
+
+.media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.delivery_price {
+  color: darkgoldenrod;
+}
+
+.resume_container {
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  background-color: var(--accent);
+  border: 1px solid var(--primary);
+  border-radius: 20px;
+  overflow: hidden;
+  height: fit-content;
+}
+
+.resume_container.close {
+  height: 2.4rem !important;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon_arrow {
+  margin-top: -6px;
+  font-size: 1.2rem;
+}
+
+.resume_container h4 {
+  margin-bottom: 0.5rem;
+}
+
 @media screen and (max-width: 1180px) {
   .product_info {
     flex-basis: 60%;
@@ -331,9 +393,15 @@
     flex-direction: column;
     max-width: 700px;
     margin: 0 auto;
-    padding-bottom: 8rem;
+    /* padding-bottom: 8rem; */
   }
   .fixed_action {
     display: flex;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .media_container {
+    flex-basis: 100%;
   }
 }
