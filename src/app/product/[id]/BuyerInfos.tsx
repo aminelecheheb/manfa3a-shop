@@ -120,7 +120,8 @@ const BuyerInfos = ({
 
     if (typeof productPrice !== "number" || !productPrice) return;
 
-    const livraison = data.get("livraison");
+    // const livraison = data.get("livraison");
+    const livraison = deliveryPrice.toString();
 
     if (typeof livraison !== "string" || !livraison) return;
 
@@ -283,6 +284,9 @@ const BuyerInfos = ({
               اطلب الان
             </button>
           </div>
+          {/* <button className={styles.action_btn} type="submit">
+            اطلب الان
+          </button> */}
           <div className={styles.fixed_action}>
             <SubmitBtn />
           </div>
