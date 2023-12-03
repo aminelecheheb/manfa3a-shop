@@ -39,7 +39,7 @@ const Table = ({
                 {/* <th>اللقب</th> */}
                 <th>رقم الهاتف</th>
                 <th>العنوان</th>
-                <th>نوع التوصيل</th>
+                {/* <th>نوع التوصيل</th> */}
                 <th>المنتج</th>
                 <th>اللون</th>
                 <th>الكمية</th>
@@ -79,11 +79,15 @@ const Table = ({
                     {/* <td> {order.lastName} </td> */}
                     <td> {order.phoneNumber} </td>
                     <td>{order.adress}</td>
-                    <td> {order.livraison} </td>
+                    {/* <td> {order.livraison} </td> */}
                     <td>{order.productName}</td>
                     <td> {order.color ?? "المتوفر"} </td>
                     <td> {order.quantity} </td>
-                    <td>{order.quantity * order.productPrice} دج</td>
+                    <td>
+                      {order.quantity * order.productPrice +
+                        parseInt(order.livraison)}
+                      دج
+                    </td>
                     {activeTab === "new orders" && (
                       <>
                         <td className={styles.btn_td}>
@@ -153,8 +157,6 @@ const Table = ({
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
-                {/* <td></td> */}
                 <td></td>
                 <td></td>
                 <td></td>
