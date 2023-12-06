@@ -20,14 +20,9 @@ const Navbar = () => {
       <div className="container">
         <div className={styles.nav_flex}>
           <div className={styles.logo}>
-            {/* <div>
-              <h3 className={styles.logo}>منفعة شوب</h3>
-              <h3>Weal Shop</h3>
-            </div>
-            <FaShopify className={styles.icon} /> */}
-            <div className={styles.logo_container}>
+            <Link href="/" className={styles.logo_container}>
               <Image src={logo} fill alt="logo" className={styles.logo_img} />
-            </div>
+            </Link>
           </div>
 
           <div className={styles.links}>

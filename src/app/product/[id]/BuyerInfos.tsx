@@ -35,7 +35,10 @@ const BuyerInfos = ({
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [allCommunes, setAllCommunes] = useState(communes);
-  const [pricesf, setPricesf] = useState(prices);
+  // const [pricesf, setPricesf] = useState(prices);
+
+  const [pending, setPending] = useState(false);
+
   const [alert, setAlert] = useState({
     showAlert: false,
     type: "",
@@ -97,9 +100,6 @@ const BuyerInfos = ({
     const firstName = data.get("fName");
     if (typeof firstName !== "string" || !firstName) return;
 
-    // const lastName = data.get("lName");
-    // if (typeof lastName !== "string" || !lastName) return;
-
     const phoneNumber = data.get("phone");
     if (typeof phoneNumber !== "string" || !phoneNumber) return;
 
@@ -137,6 +137,9 @@ const BuyerInfos = ({
       quantity,
       selectedColor
     );
+    setPending(false);
+    console.log(pending);
+
     formRef.current?.reset();
     console.log(result);
     result.order
@@ -280,9 +283,10 @@ const BuyerInfos = ({
                 </span>
               </div>
             </div>
-            <button className={styles.action_btn} type="submit">
+            {/* <button className={styles.action_btn} type="submit">
               اطلب الان
-            </button>
+            </button> */}
+            <SubmitBtn />
           </div>
           {/* <button className={styles.action_btn} type="submit">
             اطلب الان
@@ -338,12 +342,29 @@ const AlertModel = ({
 
 const SubmitBtn = () => {
   const { pending } = useFormStatus();
-  // console.log(pending);
+  console.log(pending);
 
   return (
-    <button disabled={pending} className={styles.btn_fixed} type="submit">
-      اشتر الان
+    <button disabled={pending} className={styles.action_btn} type="submit">
+      {pending ? <Loader /> : "اشتر الان"}
     </button>
+  );
+};
+
+const Loader = () => {
+  return (
+    <div className="loader_container">
+      <div className="dot-spinner">
+        <div className="dot-spinner__dot"></div>
+        <div className="dot-spinner__dot"></div>
+        <div className="dot-spinner__dot"></div>
+        <div className="dot-spinner__dot"></div>
+        <div className="dot-spinner__dot"></div>
+        <div className="dot-spinner__dot"></div>
+        <div className="dot-spinner__dot"></div>
+        <div className="dot-spinner__dot"></div>
+      </div>
+    </div>
   );
 };
 

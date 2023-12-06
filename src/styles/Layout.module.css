@@ -25,10 +25,16 @@
   overflow: hidden;
   height: 70px;
   aspect-ratio: 2/1;
+  cursor: pointer;
+}
+
+.logo_container:hover .logo_img {
+  transform: scale(0.95);
 }
 
 .logo_img {
   object-fit: contain;
+  transition-duration: 150ms;
 }
 
 .logo .icon {
